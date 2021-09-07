@@ -4,9 +4,7 @@ const connectionStr = 'mongodb://localhost:27017/albumlove';
 
 mongoose.connect(connectionStr, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false
+  useUnifiedTopology: true
 });
 
 mongoose.connection.on('connected', () => {
