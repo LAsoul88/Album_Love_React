@@ -8,7 +8,7 @@ A music lover would bring home their new music, pop it on to the record player a
 
 Album Love is a social media website aimed at reuniting listeners with the pleasure of the album cover. It can be a companion to any listener that would like to see the cover as one would have in days past.
 
-![Giant Steps](./images/GiantSteps)
+![Giant Steps](images/GiantSteps)
 
 ### What can reasonably be finished
 
