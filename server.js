@@ -2,6 +2,7 @@
 const express = require('express');
 const methodOverride = require('method-override');
 require('./config/db.connection');
+require('dotenv').config();
 
 // module instance
 const app = express();
@@ -12,11 +13,15 @@ const PORT = 3000;
 /* === Internal Modules === */
 const controllers = require('./controllers');
 
+/* === App Config === */
+
+app.set("view engine", "ejs");
 
 /* === Middleware === */
 app.use(express.static("public"));
 
 app.use(methodOverride("_method"));
+
 
 
 /* === Routes === */
