@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head/_head', { page: user.username }) %>
+
 <body>
-  
+  <%- include('../partials/navbar/_navbar') %>
+  <h1>Welcome <%= user.username %></h1>
+
+  <%- include('../partials/footer/_footer') %>
 </body>
 </html>

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('../partials/head/_head', { page: 'Home' }) %>
+<%- include('../partials/head/_head', { page: 'Home' }) %>
+
 <body>
+  <%- include('../partials/navbar/_navbar') %>
   <form>
     <input 
       type="text" 
@@ -25,5 +27,6 @@
     </div>
   </div>
 
+  <%- include('../partials/footer/_footer') %>
 </body>
 </html>

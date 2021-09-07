@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head/_head', { page: album.name }) %>
+
 <body>
+  <%- include('../partials/navbar/_navbar') %>
   <img src="<%= album.images[0].url %>" alt="<%= album.name %> image" />
+
+  <%- include('../partials/footer/_footer') %>
 </body>
 </html>
