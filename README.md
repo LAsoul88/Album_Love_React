@@ -8,8 +8,9 @@ A music lover would bring home their new music, pop it on to the record player a
 
 Album Love is a social media website aimed at reuniting listeners with the pleasure of the album cover. It can be a companion to any listener that would like to see the cover as one would have in days past.
 
-![Giant Steps](images/GiantSteps)
-
+```html
+<img src="./images/GiantSteps.jpeg" alt="Giant Steps" />
+```
 ### What can reasonably be finished
 
 Users will be able to register an account, login/logout, and browse/search for their favorite albums (all sourced from the Spotify Web API) and add them to their "record collection." The record collection will be a public profile page that shows all albums added by the user. 
