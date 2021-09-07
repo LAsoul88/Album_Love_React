@@ -26,7 +26,8 @@
       <% for( let index = 0; index < albums.length; index++ ) { %>
         <% const album = albums[index] %>
         <h3> <%= album.name %> </h3>
-        <img src="<%= album.images[0].url %>" alt="" /> 
+        <img src="<%= album.images[0].url %>" alt="" />
+        <h4> <%= album.id %> </h4> 
       <% } %>
     </div>
   </div>
