@@ -8,7 +8,7 @@ A music lover would bring home their new music, pop it on to the record player a
 
 Album Love is a social media website aimed at reuniting listeners with the pleasure of the album cover. It can be a companion to any listener that would like to see the cover as one would have in days past.
 
-![Giant Steps](images/GiantSteps)
+# <img src="images/GiantSteps.jpeg" alt="Giant Steps" />
 
 ### What can reasonably be finished
 
@@ -62,4 +62,89 @@ If the user clicks on their own username in the nav bar, they will be taken to t
 
 Stretch goals on this page include generating a list of comments that the user has left and the ability to view other user's record collections.
 
-[Color Palette](https://coolors.co/d64236-e46947-e89c6e-e1c5a1-7b9d97-2c818c-1e6982-163251)
+
+## Wireframes
+
+
+This is the [Color Palette](https://coolors.co/d64236-e46947-e89c6e-e1c5a1-7b9d97-2c818c-1e6982-163251) I will use.
+
+### Login Page
+
+# <img src="images/Login.png" alt="Giant Steps" />
+
+### Profile Page
+
+# <img src="images/ProfileShow.png" alt="Giant Steps" />
+
+### Home Page
+
+# <img src="images/Home.png" alt="Giant Steps" />
+
+### Album Page
+
+# <img src="images/AlbumShow.png" alt="Giant Steps" />
+
+
+## Data Models
+
+Album Love will use two models for the database: User and Comment.
+
+In addition, all album information will be sourced and rendered from the Spotify Web API.
+
+While the API will not be a model in the Album Love database, it will still share a relationship with the User and Comment models, so it is included in this relationship chart.
+
+# <img src="images/Models.png" alt="data models" />
+
+### User
+
+The user model is plain and simple. We will have an email and password for authentication, a username for representation on the site, and a recordCollection attribute that will store an array of album id's for referencing in the Spotify database.
+
+### Comments
+
+Comments will feature attributes for content and a timestamp. These will populate the comment text and time of creation respectively on any pages that feature comments. In addition, comments will store a userId corresponding to the id of the creating user, and an albumId that will be used to reference the Spotify database.
+
+### Albums
+
+Since all of this information will be sourced from Spotify's API, we won't need a model for albums. We will be referencing specific data points that spotify tracks for all albums: title, image, artist, release date, track list, and genres. Each page will be dynamically populated using this data by referencing specific album id's.
+
+
+
+# MVP
+
+## Milestone 1 - completed by 9/9
+
+- Github repo initialized, dependencies installed
+- Basic server file configured
+- Schema for models set up
+- Controllers for individual routes to album show/index pages as well as user profile page
+- Views established for aformentioned pages
+- Partials set up for nav, footer, and tab
+- Connection established between database and server
+- Set up logic for Spotify Authorization, submitting queries through API, and adding information to context for ejs pages (see Feasibility Study)
+- Basic styling for ejs pages for the purposes of testing and organization
+
+## Milestone 2 - completed by 9/13
+
+- Creating search bar that executes searches through Spotify API
+- set up full authentication for Album Love users
+- set up express-session
+- set up controllers for comments
+- add record collection functionality ('add to collection' button, logic behind adding a spotify album id to recordCollection array
+- set database up online and connect to application
+
+## Milestone 3 - completed by 9/16
+
+- Finish styling and organizing elements of ejs pages for deployment
+- Adjusting css/js for the purposes of responsiveness to user input
+- Refactor code for professional formatting and readability
+- Deploy application
+
+## Features that would be good to include, time permitting
+
+- Adding likes to both comments and albums
+- Provide a featured album randomly chosen from Spotify API each week
+
+## Features for future iterations
+
+- Providing suggested albums to users based on albums already present in record collection
+- Add an independent discussion thread that users can comment on, present on the homepage
