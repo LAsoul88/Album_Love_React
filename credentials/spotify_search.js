@@ -14,6 +14,4 @@ const searchReturn = async (searchQuery) => {
   return query.data.albums.items;
 };
 
-searchReturn();
-
 module.exports = searchReturn;

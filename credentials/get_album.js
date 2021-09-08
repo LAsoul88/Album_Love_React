@@ -13,11 +13,4 @@ const getAlbum = async (id) => {
   return target.data;
 };
 
-const obtainId = async () => {
-  // pull id from the dom?
-  // I'm using a form, so maybe this logic belongs there
-};
-
-getAlbum('3cADvHRdKniF9ELCn1zbGH');
-
 module.exports = getAlbum;
