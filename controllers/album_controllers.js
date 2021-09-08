@@ -5,13 +5,18 @@ const getAlbum = require('../credentials/get_album');
 
 router.get('/', async (req, res, next) => {
   try {
-    console.log(req.query);
-    const foundAlbums = await searchQuery(req.query.search);
 
+    if (!req.query.search) {
+      const context = {
+        albums: null,
+      };
+      return res.render('albums/index', context);
+    }
+
+    const foundAlbums = await searchQuery(req.query.search);
     const context = {
       albums: foundAlbums,
     };
-
     return res.render('albums/index', context);
 
   } catch (error) {

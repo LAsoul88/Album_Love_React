@@ -1,3 +1,16 @@
+:root {
+  --prussian-blue: #163251;
+  --blue-sapphire: #1E6982;
+  --metallic-seaweed: #2C818C;
+  --morning-blue: #7B9D97;
+  --tan: #E1C5A1;
+  --tan-crayola: #E89C6E;
+  --burnt-sienna: #E46947;
+  --cg-red: #D64236;
+}
+
+
+
 img {
   width: 700px;
   height: auto;
@@ -7,3 +20,7 @@ img {
   width: 400px;
   height: auto;
 }
+
+
+/* Nav */
+
