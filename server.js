@@ -53,7 +53,8 @@ app.use(require('./utils/logger'));
 
 /* === Routes === */
 app.use('/', controllers.auth);
-app.use('/users', controllers.user);
 app.use('/albums', controllers.album);
+// app.use('/comments', controllers.comment);
+app.use('/users', controllers.user);
 
 app.listen(PORT, () => console.log(`Listening for some tunes on port:`, PORT));
