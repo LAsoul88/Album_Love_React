@@ -56,6 +56,11 @@ router.post('/login', async (req, res) => {
       return console.log('no match');
     }
 
+    req.session.currentUser = {
+      id: foundUser._id,
+      username: foundUser.username
+    };
+
     return res.redirect(`/albums`);
 
   } catch (error) {
