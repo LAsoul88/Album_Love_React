@@ -4,7 +4,22 @@
 
 <body>
   <%- include('../partials/navbar/_navbar') %>
+  <h2><%= album.name %></h2>
+  <h3>Release Date: <%= album.release_date %></h3>
+  <div class="track-list">
+    Track list: 
+    <ol>
+      <% for (let i = 0; i < album.tracks.items.length; i++) { %> 
+        <% const track = album.tracks.items[i] %>
+        <li><%= track.name %></li> 
+      <% } %> 
+    </ol>
+  </div>
   <img src="<%= album.images[0].url %>" alt="<%= album.name %> image" />
+
+
+
+
 
   <%- include('../partials/footer/_footer') %>
 </body>

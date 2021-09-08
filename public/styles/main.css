@@ -1,4 +1,72 @@
+:root {
+  --prussian-blue: #163251;
+  --blue-sapphire: #1E6982;
+  --metallic-seaweed: #2C818C;
+  --morning-blue: #7B9D97;
+  --tan: #E1C5A1;
+  --tan-crayola: #E89C6E;
+  --burnt-sienna: #E46947;
+  --cg-red: #D64236;
+}
+
+body {
+  margin: 0;
+}
+
 img {
   width: 700px;
   height: auto;
+}
+
+.listed-album {
+  width: 400px;
+  height: auto;
+}
+
+
+/* Nav */
+
+.nav-container {
+  display: grid;
+  background: var(--prussian-blue);
+  width: 100%;
+  height: 100px;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: 1;
+  grid-template-areas: 
+    'box1 . . . . . . . box9 box10';
+}
+
+.nav-link {
+  text-align: center;
+  align-self: center;
+}
+
+.nav-link a {
+  color: var(--tan-crayola);
+  text-decoration: none;
+}
+
+.album-love {
+  grid-area: box1;
+}
+
+.register {
+  display: initial;
+  grid-area: box10;
+}
+
+.login {
+  display: initial;
+  grid-area: box9;
+}
+
+.username {
+  display: none;
+  grid-area: box9;
+}
+
+.logout {
+  display: none;
+  grid-area: box10;
 }

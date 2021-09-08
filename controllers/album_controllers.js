@@ -5,12 +5,19 @@ const getAlbum = require('../credentials/get_album');
 
 router.get('/', async (req, res, next) => {
   try {
-    const foundAlbums = await searchQuery();
 
+    if (!req.query.search) {
+      const context = {
+        albums: null,
+      };
+      return res.render('albums/index', context);
+    }
+
+    const foundAlbums = await searchQuery(req.query.search);
     const context = {
       albums: foundAlbums,
     };
-
+    
     return res.render('albums/index', context);
 
   } catch (error) {
@@ -22,12 +29,9 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    console.log('====================');
-    console.log('==========', req.params, '==========');
-    console.log('====================')
-
+    
     const foundAlbum = await getAlbum(req.params.id);
-
+    
     const context = {
       album: foundAlbum,
     };

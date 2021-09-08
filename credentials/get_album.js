@@ -9,14 +9,8 @@ const getAlbum = async (id) => {
       'Authorization': 'Bearer ' + token
     }
   });
-  console.log(target.data.name);
+  /* console.log(target.data.name); */
   return target.data;
 };
-
-const obtainId = async () => {
-  
-}
-
-getAlbum('3cADvHRdKniF9ELCn1zbGH');
 
 module.exports = getAlbum;
