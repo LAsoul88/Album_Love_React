@@ -13,6 +13,10 @@ const getAlbum = async (id) => {
   return target.data;
 };
 
+const obtainId = async () => {
+  
+}
+
 getAlbum('3cADvHRdKniF9ELCn1zbGH');
 
 module.exports = getAlbum;
