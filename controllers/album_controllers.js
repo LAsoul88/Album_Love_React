@@ -17,6 +17,7 @@ router.get('/', async (req, res, next) => {
     const context = {
       albums: foundAlbums,
     };
+    
     return res.render('albums/index', context);
 
   } catch (error) {
