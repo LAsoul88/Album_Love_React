@@ -29,13 +29,37 @@ router.post('/register', async (req, res) => {
     req.body.password = hash;
 
     const newUser = await User.create(req.body);
-    return console.log(newUser);
+    return res.redirect('/login');
 
   } catch (error) {
     console.log(error);
     return res.send(error);
   }
 });
+
+router.post('/login', async (req, res) => {
+  try {
+
+    const foundUser = await User.findOne({
+      email: req.body.email
+    });
+    if (!foundUser) {
+      return res.redirect('/register');
+    }
+
+    const match = await bcrypt.compare(req.body.password, foundUser.password);
+    if (!match) {
+      return console.log('no match');
+    }
+
+    return console.log(foundUser);
+    // res.redirect(`/users/${foundUser._id}`);
+
+  } catch (error) {
+    console.log(error);
+    return res.send(error);
+  }
+})
 
 
 module.exports = router;
