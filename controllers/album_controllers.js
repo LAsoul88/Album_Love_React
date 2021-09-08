@@ -5,7 +5,8 @@ const getAlbum = require('../credentials/get_album');
 
 router.get('/', async (req, res, next) => {
   try {
-    const foundAlbums = await searchQuery();
+    console.log(req.query);
+    const foundAlbums = await searchQuery(req.query.search);
 
     const context = {
       albums: foundAlbums,
@@ -26,7 +27,7 @@ router.get('/:id', async (req, res, next) => {
     const foundAlbum = await getAlbum(req.params.id);
     
     console.log('====================');
-    console.log('==========', foundAlbum.tracks.items[0].name, '==========');
+    console.log('==========', foundAlbum.release_date, '==========');
     console.log('====================')
     const context = {
       album: foundAlbum,
