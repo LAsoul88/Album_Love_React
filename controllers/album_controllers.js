@@ -35,10 +35,14 @@ router.get('/:id', async (req, res, next) => {
   try {
     
     const foundAlbum = await getAlbum(req.params.id);
-    
+    const foundComments = await Comment.find({
+      albumId: req.params.id,
+    });
+
     const context = {
       album: foundAlbum,
       user: req.session.currentUser,
+      comments: foundComments,
     };
 
     return res.render('albums/show', context);
