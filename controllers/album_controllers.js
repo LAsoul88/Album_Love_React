@@ -22,12 +22,12 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    console.log('====================');
-    console.log('==========', req.params, '==========');
-    console.log('====================')
-
+    
     const foundAlbum = await getAlbum(req.params.id);
-
+    
+    console.log('====================');
+    console.log('==========', foundAlbum.tracks.items[0].name, '==========');
+    console.log('====================')
     const context = {
       album: foundAlbum,
     };
