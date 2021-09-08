@@ -58,16 +58,27 @@ router.post('/login', async (req, res) => {
 
     req.session.currentUser = {
       id: foundUser._id,
-      username: foundUser.username
+      username: foundUser.username,
+      email: foundUser.email,
     };
-
+  
     return res.redirect(`/albums`);
 
   } catch (error) {
     console.log(error);
     return res.send(error);
   }
-})
+});
+
+router.get('/logout', async (req, res) => {
+  try {
+    await req.session.destroy();
+    return res.redirect('/login');
+  } catch (error) {
+    console.log(error);
+    return res.send(error);
+  }
+});
 
 
 module.exports = router;

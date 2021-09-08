@@ -5,10 +5,12 @@ const getAlbum = require('../credentials/get_album');
 
 router.get('/', async (req, res, next) => {
   try {
-
+    console.log('==========');
+    console.log(req.session.currentUser.email);
     if (!req.query.search) {
       const context = {
         albums: null,
+        user: req.session.currentUser,
       };
       return res.render('albums/index', context);
     }
@@ -16,6 +18,7 @@ router.get('/', async (req, res, next) => {
     const foundAlbums = await searchQuery(req.query.search);
     const context = {
       albums: foundAlbums,
+      user: req.session.currentUser,
     };
     
     return res.render('albums/index', context);
@@ -34,6 +37,7 @@ router.get('/:id', async (req, res, next) => {
     
     const context = {
       album: foundAlbum,
+      user: req.session.currentUser,
     };
 
     return res.render('albums/show', context);
