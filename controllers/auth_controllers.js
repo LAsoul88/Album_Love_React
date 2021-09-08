@@ -14,6 +14,10 @@ router.get('/login', (req, res) => {
 router.post('/register', async (req, res) => {
   try {
 
+    // add check for password and password-confirm to match
+
+    // also, cover up the password in the input field while text
+
     const foundUser = await User.exists({
       $or: [
         { email: req.body.email },
@@ -52,8 +56,7 @@ router.post('/login', async (req, res) => {
       return console.log('no match');
     }
 
-    return console.log(foundUser);
-    // res.redirect(`/users/${foundUser._id}`);
+    return res.redirect(`/albums`);
 
   } catch (error) {
     console.log(error);
