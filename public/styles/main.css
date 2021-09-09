@@ -11,6 +11,7 @@
 
 body {
   margin: 0;
+  background-color: var(--blue-sapphire);
 }
 
 img {
@@ -18,13 +19,8 @@ img {
   height: auto;
 }
 
-.listed-album {
-  width: 400px;
-  height: auto;
-}
 
-
-/* Nav */
+/* === Nav === */
 
 .nav-container {
   display: grid;
@@ -52,21 +48,65 @@ img {
 }
 
 .register {
-  /* display: initial; */
   grid-area: box10;
 }
 
 .login {
-  /* display: initial; */
   grid-area: box9;
 }
 
 .username {
-  /* display: none; */
   grid-area: box9;
 }
 
 .logout {
-  /* display: none; */
   grid-area: box10;
+}
+
+/* === Homepage === */
+
+.album-search-container {
+  display: flex; 
+}
+
+.album-search {
+  display: flex;
+  margin: 30px 0 0 40px;
+}
+
+.search-query {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.homepage-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.left-home-container {
+  grid-column: 1 / 2;
+  display: grid;
+}
+
+.right-home-container {
+  grid-column: 2 / 3;
+  display: grid;
+}
+
+.search-results {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+}
+
+.search-results a {
+  color: var(--burnt-sienna);
+  text-decoration: none;
+}
+
+.search-results img {
+  width: 300px;
+  height: auto;
 }

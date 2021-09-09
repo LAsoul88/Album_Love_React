@@ -6,13 +6,13 @@ const { Comment, User } = require('../models');
 
 router.get('/', async (req, res, next) => {
   try {
-    
     if (!req.query.search) {
       const context = {
         albums: null,
         user: req.session.currentUser,
       };
       
+      console.log('we here a')
       return res.render('albums/index', context);
     }
 
@@ -21,6 +21,7 @@ router.get('/', async (req, res, next) => {
       albums: foundAlbums,
       user: req.session.currentUser,
     };
+    console.log('we here b')
     
     return res.render('albums/index', context);
 

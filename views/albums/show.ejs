@@ -14,7 +14,8 @@
         value="<%= album.id %>"
       />
     </div>
-    <% if (isInCollection) { %>
+    <% if (!user) { %> 
+    <% } else if (isInCollection) { %>
       <button>remove from Collection</button> 
     <% } else { %>
       <button>add to Collection</button>    
