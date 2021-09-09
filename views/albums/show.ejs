@@ -14,7 +14,11 @@
         value="<%= album.id %>"
       />
     </div>
-    <button>add to Collection</button>
+    <% if (isInCollection) { %>
+      <button>remove from Collection</button> 
+    <% } else { %>
+      <button>add to Collection</button>    
+    <% } %> 
   </form>
   <h2><%= album.name %></h2>
   <h3>Release Date: <%= album.release_date %></h3>

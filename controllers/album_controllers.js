@@ -35,15 +35,23 @@ router.get('/:id', async (req, res, next) => {
   try {
     
     const foundAlbum = await getAlbum(req.params.id);
+    
     const foundComments = await Comment.find({
       albumId: req.params.id,
     }).populate("userId");
     console.log(foundComments);
     
+    const foundUser = await User.findOne({
+      _id: req.session.currentUser.id
+    });
+
+    const isInCollection = foundUser.recordCollection.includes(req.params.id);
+
     const context = {
       album: foundAlbum,
       comments: foundComments,
-      user: req.session.currentUser,
+      user: foundUser,
+      isInCollection: isInCollection
     };
 
     return res.render('albums/show', context);
