@@ -39,18 +39,7 @@ router.get('/:id', async (req, res, next) => {
       albumId: req.params.id,
     }).populate("userId");
     console.log(foundComments);
-
-   
-    // const commentWithUsername = await foundComments.map(async comment => {
-    //   const foundUser = await User.findOne({ _id: comment.userId });
-    //   // console.log(foundUser.username)
-    //   return foundUser.username;
-    // });
-    // await console.log(commentWithUsername)
     
-  
-    
-
     const context = {
       album: foundAlbum,
       comments: foundComments,

@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema(
       required: [true, 'password required']
     },
     recordCollection: [{
-      type: String,
+      type: [String],
       default: []
     }],
   },

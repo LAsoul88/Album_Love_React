@@ -21,4 +21,22 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
+router.put('/:id', async (req, res, next) => {
+  try {
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: req.session.currentUser.id },
+      { $push: {
+        recordCollection: req.body.recordCollection }}
+    );
+
+    return res.redirect(`/albums/${req.body.recordCollection}`);
+    
+  } catch (error) {
+    console.log(error);
+    req.error = error;
+    return next();
+  }
+});
+
+
 module.exports = router;
