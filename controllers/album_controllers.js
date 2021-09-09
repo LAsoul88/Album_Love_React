@@ -42,11 +42,16 @@ router.get('/:id', async (req, res, next) => {
     }).populate("userId");
     console.log(foundComments);
     
-    const foundUser = await User.findOne({
-      _id: req.session.currentUser.id
-    });
+    let foundUser = null;
+    let isInCollection = false;
 
-    const isInCollection = foundUser.recordCollection.includes(req.params.id);
+    if (req.session.currentUser) {
+      foundUser = await User.findOne({
+      _id: req.session.currentUser.id
+      });
+
+      isInCollection = foundUser.recordCollection.includes(req.params.id);
+    }
 
     const context = {
       album: foundAlbum,
