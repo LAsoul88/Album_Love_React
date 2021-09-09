@@ -3,6 +3,35 @@
 <%- include('../partials/head/_head', { page: 'Login' }) %>
 
 <body>
-  
+  <%- include('../partials/navbar/_navbar') %>
+  <main>
+    <div>
+      <form action="/login" method="POST">
+        <div class="login-input">
+          <label for="email">email:</label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="enter email"
+            required
+          />
+        </div>
+        <div class="login-input">
+          <label for="password">password:</label>
+          <input
+            type="text"
+            name="password"
+            id="password"
+            placeholder="create password"
+            required
+          />
+        </div>
+        <button>Submit</button>
+      </form>
+    </div>
+  </main>
+
+  <%- include('../partials/footer/_footer') %>
 </body>
 </html>

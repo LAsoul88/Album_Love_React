@@ -7,8 +7,8 @@ const CommentSchema = new mongoose.Schema(
       required: true
     },
     userId: {
-      type: String,
-      required: true
+      type: mongoose.Types.ObjectId,
+      ref: 'User'
     },
     albumId: {
       type: String,

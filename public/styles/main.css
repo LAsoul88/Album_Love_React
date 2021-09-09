@@ -52,21 +52,21 @@ img {
 }
 
 .register {
-  display: initial;
+  /* display: initial; */
   grid-area: box10;
 }
 
 .login {
-  display: initial;
+  /* display: initial; */
   grid-area: box9;
 }
 
 .username {
-  display: none;
+  /* display: none; */
   grid-area: box9;
 }
 
 .logout {
-  display: none;
+  /* display: none; */
   grid-area: box10;
 }

@@ -18,6 +18,26 @@
   <img src="<%= album.images[0].url %>" alt="<%= album.name %> image" />
 
 
+  <form class="comment-form" action="/albums/<%= album.id %>" method="POST">
+    <div>
+      <input 
+        type="text"
+        name="content"
+        id="content"
+        placeholder="leave a comment"
+        required
+      />
+    </div>
+    <button>Submit</button>
+  </form> 
+  
+  <div class="comments-container">
+    <% for (let i = 0; i < comments.length; i++) { %>
+      <% const comment = comments[i] %> 
+      <p><%= comment.userId.username %></p>
+      <p><%= comment.content %></p>
+    <% } %>  
+  </div>
 
 
 
