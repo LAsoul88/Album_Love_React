@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const searchQuery = require('../credentials/spotify_search');
 const getAlbum = require('../credentials/get_album');
-const { Comment } = require('../models');
+const { Comment, User } = require('../models');
 
 router.get('/', async (req, res, next) => {
   try {
@@ -37,12 +37,24 @@ router.get('/:id', async (req, res, next) => {
     const foundAlbum = await getAlbum(req.params.id);
     const foundComments = await Comment.find({
       albumId: req.params.id,
-    });
+    }).populate("userId");
+    console.log(foundComments);
+
+   
+    // const commentWithUsername = await foundComments.map(async comment => {
+    //   const foundUser = await User.findOne({ _id: comment.userId });
+    //   // console.log(foundUser.username)
+    //   return foundUser.username;
+    // });
+    // await console.log(commentWithUsername)
+    
+  
+    
 
     const context = {
       album: foundAlbum,
-      user: req.session.currentUser,
       comments: foundComments,
+      user: req.session.currentUser,
     };
 
     return res.render('albums/show', context);

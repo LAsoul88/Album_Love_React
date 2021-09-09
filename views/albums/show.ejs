@@ -34,6 +34,7 @@
   <div class="comments-container">
     <% for (let i = 0; i < comments.length; i++) { %>
       <% const comment = comments[i] %> 
+      <p><%= comment.userId.username %></p>
       <p><%= comment.content %></p>
     <% } %>  
   </div>
