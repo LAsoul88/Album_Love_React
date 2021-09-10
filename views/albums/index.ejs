@@ -4,31 +4,50 @@
 
 <body>
   <%- include('../partials/navbar/_navbar') %>
-  <form action="albums" method="GET">
-    <input 
-      type="text" 
-      name="search"
-      id="search-query"
-      placeholder="search for an album" 
-      required 
-    />
-    <input type="submit" value="Submit" id="search-submit" />
-  </form>
-
-  <div class="search-results">
-    <h1>Albums</h1>
-    <div>
-      <% if (albums) { %> 
-        <% for( let index = 0; index < albums.length; index++ ) { %>
-          <% const album = albums[index] %>
-          <h3><a href="/albums/<%= album.id %>"><%= album.name %></a></h3>
-          <img class="listed-album" src="<%= album.images[0].url %>" alt="" />
-          <h4> <%= album.id %> </h4> 
-        <% } %>
-      <% } %> 
+  <div class="album-search-container">
+    <form class="album-search" action="albums" method="GET">
+      <input 
+        type="text" 
+        name="search"
+        id="search-query"
+        class="search-query"
+        placeholder="search for an album" 
+        required 
+      />
+      <input type="submit" value="Submit" id="search-submit" class="search-query"/>
+    </form>
+  </div>
+  <div class="homepage-container">
+    <div class="left-home-container">
+      <h2>Albums</h2>
+      <div class="search-results">
+        <% if (albums) { %> 
+          <% for( let i = 0; i < albums.length; i++ ) { %>
+            <% const album = albums[i] %>
+            <div class="results-container">
+              <a href="/albums/<%= album.id %>"><p><%= album.name %></p></a>
+              <a href="/albums/<%= album.id %>"><img src="<%= album.images[0].url %>" alt="" /></a>
+            </div>
+          <% } %>
+        <% } %> 
+      </div>
+    </div>
+    <div class="right-home-container">
+      <h2>Latest Comments</h2>
+      <div class="latest-comments">
+        <% for (let i = 0; i < comments.length; i++) { %>
+          <% const comment = comments[i] %>
+          <div class="comment-container">
+            <div class="comment-user">
+              <img src="<%= comment.userId.avatar %>" alt="user avatar" />
+              <p><%= comment.userId.username %></p>
+            </div>
+            <p class="comment-content"><%= comment.content %></p> 
+          </div>
+        <% } %> 
+      </div>
     </div>
   </div>
-
   <%- include('../partials/footer/_footer') %>
 </body>
 </html>

@@ -6,10 +6,14 @@ const { Comment, User } = require('../models');
 
 router.get('/', async (req, res, next) => {
   try {
-    
+
+    const foundComments = await Comment.find({}).populate("userId").sort({ createdAt: -1 });
+    console.log(foundComments);
+
     if (!req.query.search) {
       const context = {
         albums: null,
+        comments: foundComments,
         user: req.session.currentUser,
       };
       
@@ -17,8 +21,10 @@ router.get('/', async (req, res, next) => {
     }
 
     const foundAlbums = await searchQuery(req.query.search);
+
     const context = {
       albums: foundAlbums,
+      comments: foundComments,
       user: req.session.currentUser,
     };
     
@@ -35,26 +41,28 @@ router.get('/:id', async (req, res, next) => {
   try {
     
     const foundAlbum = await getAlbum(req.params.id);
+    
     const foundComments = await Comment.find({
       albumId: req.params.id,
     }).populate("userId");
     console.log(foundComments);
+    
+    let foundUser = null;
+    let isInCollection = false;
 
-   
-    // const commentWithUsername = await foundComments.map(async comment => {
-    //   const foundUser = await User.findOne({ _id: comment.userId });
-    //   // console.log(foundUser.username)
-    //   return foundUser.username;
-    // });
-    // await console.log(commentWithUsername)
-    
-  
-    
+    if (req.session.currentUser) {
+      foundUser = await User.findOne({
+      _id: req.session.currentUser.id
+      });
+
+      isInCollection = foundUser.recordCollection.includes(req.params.id);
+    }
 
     const context = {
       album: foundAlbum,
       comments: foundComments,
-      user: req.session.currentUser,
+      user: foundUser,
+      isInCollection: isInCollection
     };
 
     return res.render('albums/show', context);

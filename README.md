@@ -136,6 +136,7 @@ Since all of this information will be sourced from Spotify's API, we won't need 
 
 - Finish styling and organizing elements of ejs pages for deployment
 - Adjusting css/js for the purposes of responsiveness to user input
+- Mobile responsiveness
 - Refactor code for professional formatting and readability
 - Deploy application
 

@@ -11,6 +11,11 @@
 
 body {
   margin: 0;
+  background-color: var(--blue-sapphire);
+}
+
+h2 {
+  font-size: 40px;
 }
 
 img {
@@ -18,13 +23,8 @@ img {
   height: auto;
 }
 
-.listed-album {
-  width: 400px;
-  height: auto;
-}
 
-
-/* Nav */
+/* === Nav === */
 
 .nav-container {
   display: grid;
@@ -34,7 +34,7 @@ img {
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: 1;
   grid-template-areas: 
-    'box1 . . . . . . . box9 box10';
+    'box1 . . . . . . box8 box9 box10';
 }
 
 .nav-link {
@@ -51,22 +51,124 @@ img {
   grid-area: box1;
 }
 
+.avatar {
+  grid-area: box8;
+  width: 50%;
+  height: auto; 
+  justify-self: center;
+  align-self: center;
+}
+
 .register {
-  /* display: initial; */
   grid-area: box10;
 }
 
 .login {
-  /* display: initial; */
   grid-area: box9;
 }
 
 .username {
-  /* display: none; */
   grid-area: box9;
 }
 
 .logout {
-  /* display: none; */
   grid-area: box10;
+}
+
+/* === Homepage === */
+
+.album-search-container {
+  display: flex; 
+}
+
+.album-search {
+  display: flex;
+  margin: 30px 0 0 40px;
+}
+
+.search-query {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.homepage-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.left-home-container {
+  grid-column: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.right-home-container {
+  grid-column: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.search-results {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.results-container {
+  border: 2px solid var(--prussian-blue);
+  border-radius: 5px;
+  margin: 5px;
+  display: grid;
+  max-height: 450px; 
+  grid-template-rows: repeat(5, 1fr);
+  align-items: center;
+}
+
+.search-results a {
+  color: var(--burnt-sienna);
+  text-decoration: none;
+}
+
+.search-results p {
+  font-size: 30px;
+}
+
+.search-results img {
+  max-width: 300px;
+  height: auto;
+}
+
+.latest-comments {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.comment-container {
+  width: 40rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  grid-auto-rows: minmax(1fr, auto);
+}
+
+.comment-user {
+  grid-column: 1 / 2;
+  display: flex;
+  flex-direction: row;
+}
+
+.comment-user img {
+  width: 25%;
+  height: auto; 
+  justify-self: center;
+  align-self: center;
+}
+
+.comment-content {
+  grid-column: 2 / 4;
 }

@@ -60,6 +60,7 @@ router.post('/login', async (req, res) => {
       id: foundUser._id,
       username: foundUser.username,
       email: foundUser.email,
+      avatar: foundUser.avatar,
     };
   
     return res.redirect(`/albums`);
@@ -72,8 +73,10 @@ router.post('/login', async (req, res) => {
 
 router.get('/logout', async (req, res) => {
   try {
+
     await req.session.destroy();
     return res.redirect('/login');
+
   } catch (error) {
     console.log(error);
     return res.send(error);

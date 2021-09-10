@@ -4,6 +4,25 @@
 
 <body>
   <%- include('../partials/navbar/_navbar') %>
+
+  <% if (!user) { %>
+  <% } else { %> 
+  <form action="/users/<%= user.id %>?_method=PUT" method="POST">
+    <div>
+      <input 
+        type="hidden"
+        name="recordCollection"
+        id="record-collection"
+        value="<%= album.id %>"
+      />
+    </div>
+    <% if (isInCollection) { %>
+      <button>remove from Collection</button> 
+    <% } else { %>
+      <button>add to Collection</button>    
+    <% } %> 
+  </form>
+  <% } %> 
   <h2><%= album.name %></h2>
   <h3>Release Date: <%= album.release_date %></h3>
   <div class="track-list">
@@ -30,7 +49,7 @@
     </div>
     <button>Submit</button>
   </form> 
-  
+
   <div class="comments-container">
     <% for (let i = 0; i < comments.length; i++) { %>
       <% const comment = comments[i] %> 

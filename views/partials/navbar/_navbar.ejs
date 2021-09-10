@@ -1,10 +1,11 @@
 <nav>
   <div class="nav-container">
     <span class="album-love nav-link"><a href="/albums">Album Love</a></span>
-    <% if (!user) { %> 
+    <% if (!user) { %>
       <span class="register nav-link"><a href="/register">Register</a></span>
       <span class="login nav-link"><a href="/login">Login</a></span>
     <% } else { %> 
+      <img class="avatar" src="<%= user.avatar %>" alt="user avatar" />
       <span class="username nav-link"><a href="/users/<%= user.id %>"><%= user.username %></a></span>
       <span class="logout nav-link"><a href="/logout">Logout</a></span>
     <% } %> 
