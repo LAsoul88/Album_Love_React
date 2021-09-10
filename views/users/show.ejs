@@ -10,6 +10,9 @@
     </div>
     <div class="bottom-profile">
       <% if (!albums) { %>
+        <div>
+          <p>Time to dig for some records and find your favorites on the homepage!</p>
+        </div>
       <% } else { %>  
         <div class="record-collection">
           <% for (let i = 0; i < albums.length; i++) { %>
