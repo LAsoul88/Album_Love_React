@@ -6,22 +6,27 @@ const { Comment, User } = require('../models');
 
 router.get('/', async (req, res, next) => {
   try {
+
+    const foundComments = await Comment.find({}).populate("userId").sort({ createdAt: -1 });
+    console.log(foundComments);
+
     if (!req.query.search) {
       const context = {
         albums: null,
+        comments: foundComments,
         user: req.session.currentUser,
       };
       
-      console.log('we here a')
       return res.render('albums/index', context);
     }
 
     const foundAlbums = await searchQuery(req.query.search);
+
     const context = {
       albums: foundAlbums,
+      comments: foundComments,
       user: req.session.currentUser,
     };
-    console.log('we here b')
     
     return res.render('albums/index', context);
 

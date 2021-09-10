@@ -20,6 +20,10 @@ const UserSchema = new mongoose.Schema(
       type: [String],
       default: []
     }],
+    avatar: {
+      type: String,
+      default: 'https://st.depositphotos.com/1014680/1884/i/600/depositphotos_18840485-stock-photo-vinyl-record.jpg'
+    }
   },
   {
     timestamps: true
