@@ -145,15 +145,21 @@ img {
 .latest-comments {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 40px;justify-content: center;
+  align-items: center;
 }
 
 .comment-container {
-  width: 40rem;
+  width: 30rem;
+  height: auto;
+  padding: 10px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 2fr 4fr 3fr;
   grid-template-rows: auto;
   grid-auto-rows: minmax(1fr, auto);
+  border: 2px inset black;
+  border-radius: 5px;
+  justify-self: center;
 }
 
 .comment-user {
@@ -169,6 +175,23 @@ img {
   align-self: center;
 }
 
+.comment-user p {
+  align-self: center;
+}
+
 .comment-content {
-  grid-column: 2 / 4;
+  grid-column: 2 / 3;
+  align-self: center;
+}
+
+.comment-album {
+  grid-column: 3 / 4;
+  display: flex;
+  justify-content: center;
+}
+
+.comment-album img {
+  width: 40%;
+  height: auto;
+  align-self: center;
 }
