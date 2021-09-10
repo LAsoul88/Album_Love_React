@@ -38,12 +38,14 @@
         <% for (let i = 0; i < comments.length; i++) { %>
           <% const comment = comments[i] %>
           <div class="comment-container">
-            <div class="comment-user">
+            <div class="comment-section-1">
               <img src="<%= comment.userId.avatar %>" alt="user avatar" />
               <p><%= comment.userId.username %></p>
             </div>
-            <p class="comment-content"><%= comment.content %></p> 
-            <div class="comment-album">
+            <div class="comment-section-2">
+              <p class="comment-content"><%= comment.content %></p> 
+            </div>
+            <div class="comment-section-3">
               <img src="<%= commentAlbums[i].images[0].url %>" />
             </div>
           </div>

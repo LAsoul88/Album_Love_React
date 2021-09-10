@@ -4,60 +4,67 @@
 
 <body>
   <%- include('../partials/navbar/_navbar') %>
-
-  <% if (!user) { %>
-  <% } else { %> 
-  <form action="/users/<%= user.id %>?_method=PUT" method="POST">
-    <div>
-      <input 
-        type="hidden"
-        name="recordCollection"
-        id="record-collection"
-        value="<%= album.id %>"
-      />
+  <div class="show-page">
+    <div class="top">
+      <h2 class="album-name"><%= album.name %></h2>
+      <h2 class="artist-name">Artist: <%= album.artists[0].name %></h2>
+      <h3 class="release-date">Release Date: <%= album.release_date %></h3>
+      <div class="track-list-container">
+        Track list: 
+        <ol class="track-list">
+          <% for (let i = 0; i < album.tracks.items.length; i++) { %> 
+            <% const track = album.tracks.items[i] %>
+            <li class="track-name"><%= track.name %></li> 
+          <% } %> 
+        </ol>
+      </div>
+      <img src="<%= album.images[0].url %>" alt="<%= album.name %> image" />
     </div>
-    <% if (isInCollection) { %>
-      <button>remove from Collection</button> 
-    <% } else { %>
-      <button>add to Collection</button>    
-    <% } %> 
-  </form>
-  <% } %> 
-  <h2><%= album.name %></h2>
-  <h3>Release Date: <%= album.release_date %></h3>
-  <div class="track-list">
-    Track list: 
-    <ol>
-      <% for (let i = 0; i < album.tracks.items.length; i++) { %> 
-        <% const track = album.tracks.items[i] %>
-        <li><%= track.name %></li> 
+    <div class="bottom">
+      <% if (!user) { %>
+        <% } else { %> 
+        <form class="record-collection-button" action="/users/<%= user.id %>?_method=PUT" method="POST">
+          <input 
+            type="hidden"
+            name="recordCollection"
+            id="record-collection"
+            value="<%= album.id %>"
+          />
+          <% if (isInCollection) { %>
+            <button>remove from Collection</button> 
+          <% } else { %>
+            <button>add to Collection</button>    
+          <% } %> 
+        </form>
       <% } %> 
-    </ol>
-  </div>
-  <img src="<%= album.images[0].url %>" alt="<%= album.name %> image" />
+      <form class="comment-form" action="/albums/<%= album.id %>" method="POST">
+        <div>
+          <input 
+            type="text"
+            name="content"
+            id="content"
+            placeholder="leave a comment"
+            required
+          />
+        </div>
+        <button class="submit-button">Submit</button>
+      </form> 
 
-
-  <form class="comment-form" action="/albums/<%= album.id %>" method="POST">
-    <div>
-      <input 
-        type="text"
-        name="content"
-        id="content"
-        placeholder="leave a comment"
-        required
-      />
     </div>
-    <button>Submit</button>
-  </form> 
-
-  <div class="comments-container">
-    <% for (let i = 0; i < comments.length; i++) { %>
-      <% const comment = comments[i] %> 
-      <p><%= comment.userId.username %></p>
-      <p><%= comment.content %></p>
-    <% } %>  
+    <div class="show-comments-container">
+      <% for (let i = 0; i < comments.length; i++) { %>
+        <% const comment = comments[i] %> 
+        <div class="show-comment-container">
+          <img src="<%= comment.userId.avatar %>" alt="user avatar" />
+          <div class="comment-post">
+            <p class="show-comment-username"><%= comment.userId.username %></p>
+            <p class="timestamp"><%= comment.createdAt %></p>
+            <p class="show-comment-content"><%= comment.content %></p>
+          </div>
+        </div>
+      <% } %>  
+    </div>
   </div>
-
 
 
   <%- include('../partials/footer/_footer') %>

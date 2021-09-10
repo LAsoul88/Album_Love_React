@@ -44,6 +44,7 @@ img {
 
 .nav-link a {
   color: var(--tan-crayola);
+  font-size: 1.5rem;
   text-decoration: none;
 }
 
@@ -150,48 +151,187 @@ img {
 }
 
 .comment-container {
-  width: 30rem;
-  height: auto;
+  max-width: 30rem;
+  max-height: 1fr;
   padding: 10px;
   display: grid;
   grid-template-columns: 2fr 4fr 3fr;
   grid-template-rows: auto;
-  grid-auto-rows: minmax(1fr, auto);
+  grid-auto-rows: 1fr;
   border: 2px inset black;
   border-radius: 5px;
   justify-self: center;
+  overflow: hidden;
+  /* text-overflow: ellipsis; */
+  white-space: nowrap;
 }
 
-.comment-user {
+.comment-section-1 {
+  max-width: 6rem;
   grid-column: 1 / 2;
   display: flex;
   flex-direction: row;
 }
 
-.comment-user img {
+.comment-section-1 img {
   width: 25%;
   height: auto; 
   justify-self: center;
   align-self: center;
 }
 
-.comment-user p {
+.comment-section-1 p {
   align-self: center;
+}
+
+.comment-section-2 {
+  max-width: 12rem;
+  grid-column: 2 / 3;
+  display: flex;
+  justify-content: justified;
+  align-items: center;
+  border: 3px solid red;overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .comment-content {
-  grid-column: 2 / 3;
   align-self: center;
+  width: max-content;
 }
 
-.comment-album {
+.comment-section-3 {
+  max-width: 9rem;
   grid-column: 3 / 4;
   display: flex;
   justify-content: center;
 }
 
-.comment-album img {
-  width: 40%;
+.comment-section-3 img {
+  width: 50%;
   height: auto;
   align-self: center;
+}
+
+/* === Album Show Page === */
+
+.show-page {
+  display: grid;
+  grid-template-rows: 1.25fr .25fr 1fr;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: .5fr repeat(8, 1fr);
+  grid-template-rows: .25fr 1fr;
+  grid-template-areas:
+    '. album-title album-title album-title album-title artist artist release-date release-date'
+    '. album-art album-art album-art album-art track-list track-list track-list track-list';
+}
+
+.bottom {
+  display: grid;
+  grid-template-columns: .5fr repeat(8, 1fr);
+  grid-template-rows: .25fr;
+  grid-template-areas: '. collection collection collection collection . comment-form comment-form .';
+}
+
+.record-collection-button {
+  grid-area: collection;
+  justify-self: center;
+}
+
+.album-name {
+  grid-area: album-title;
+  text-align: center;
+  align-self: center;
+  font-size: 2.5rem;
+}
+
+.artist-name {
+  grid-area: artist;
+  text-align: center;
+  align-self: center;
+  font-size: 1.75rem;
+}
+
+.release-date {
+  grid-area: release-date;
+  text-align: center;
+  align-self: center;
+}
+
+.track-list-container {
+  grid-area: track-list;
+  justify-self: center;
+}
+
+.track-list {
+  font-size: 1.5rem;
+}
+
+.track-name {
+
+}
+
+.show-page img {
+  grid-area: album-art;
+  width: 100%;
+  height: auto;
+}
+
+.comment-form {
+  grid-area: comment-form;
+}
+
+.submit-button {
+
+}
+
+.show-comments-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+}
+
+.show-comment-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: .25fr;
+  grid-template-areas: 'avatar comment';
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.show-comment-container img {
+  grid-area: avatar;
+  width: 75%;
+  height: auto; 
+  justify-self: center;
+  align-self: center;
+}
+
+.comment-post {
+  grid-area: comment;
+  display: grid;
+  grid-template-columns: .5fr 1.5fr;
+  grid-template-rows: repeat(4, .25fr);
+}
+
+.show-comment-username {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  font-size: 30px;
+  justify-self:first baseline;
+  align-self: top;
+}
+
+.timestamp {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.show-comment-content {
+  grid-column: 1 / 3;
+  grid-row: 2 / 5;
 }

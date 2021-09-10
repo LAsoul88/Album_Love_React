@@ -67,6 +67,8 @@ router.get('/:id', async (req, res, next) => {
       isInCollection = foundUser.recordCollection.includes(req.params.id);
     }
 
+    console.log(foundAlbum);
+
     const context = {
       album: foundAlbum,
       comments: foundComments,
