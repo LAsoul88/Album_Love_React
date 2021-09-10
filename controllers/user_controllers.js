@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { User } = require('../models');
+const getAlbums = require('../credentials/get_albums');
 
 router.get('/:id', async (req, res, next) => {
   try {
@@ -8,8 +9,11 @@ router.get('/:id', async (req, res, next) => {
     const foundUser = await User.findOne({ 
       _id: req.params.id 
     });
+    
+    const userAlbums = await getAlbums(foundUser.recordCollection);
 
     const context = {
+      albums: userAlbums,
       user: foundUser,
     };
 

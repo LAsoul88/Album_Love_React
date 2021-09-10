@@ -185,19 +185,22 @@ img {
 }
 
 .comment-section-2 {
-  max-width: 12rem;
+  max-width: 175px;
   grid-column: 2 / 3;
   display: flex;
-  justify-content: justified;
+  /* justify-content: justified; */
   align-items: center;
-  border: 3px solid red;overflow: hidden;
+  /* border: 3px solid red; */
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .comment-content {
   align-self: center;
-  width: max-content;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .comment-section-3 {

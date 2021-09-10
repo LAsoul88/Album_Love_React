@@ -46,7 +46,7 @@
               <p class="comment-content"><%= comment.content %></p> 
             </div>
             <div class="comment-section-3">
-              <img src="<%= commentAlbums[i].images[0].url %>" />
+              <a href="/albums/<%= commentAlbums[i].id %>"><img src="<%= commentAlbums[i].images[0].url %>" alt="<%= commentAlbums[i].name %>"/></a>
             </div>
           </div>
         <% } %> 
