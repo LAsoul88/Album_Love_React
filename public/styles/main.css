@@ -130,7 +130,7 @@ img {
 }
 
 .search-results a {
-  color: var(--burnt-sienna);
+  color: var(--tan-crayola);
   text-decoration: none;
 }
 
@@ -151,26 +151,28 @@ img {
 }
 
 .comment-container {
-  max-width: 30rem;
+  width: 100%;
+  height: auto;
+  max-width: 40rem;
   max-height: 1fr;
   padding: 10px;
   display: grid;
   grid-template-columns: 2fr 4fr 3fr;
-  grid-template-rows: auto;
+  grid-template-rows: repeat(3, 1fr);
   grid-auto-rows: 1fr;
   border: 2px inset black;
   border-radius: 5px;
   justify-self: center;
-  overflow: hidden;
-  /* text-overflow: ellipsis; */
-  white-space: nowrap;
 }
 
 .comment-section-1 {
-  max-width: 6rem;
-  grid-column: 1 / 2;
+  width: 100%;
+  max-width: 20rem;
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
   display: flex;
   flex-direction: row;
+  gap: 30px;
 }
 
 .comment-section-1 img {
@@ -182,18 +184,15 @@ img {
 
 .comment-section-1 p {
   align-self: center;
+  text-align: center;
 }
 
 .comment-section-2 {
-  max-width: 175px;
-  grid-column: 2 / 3;
+  max-width: 400px;
+  grid-column: 1 / 3;
+  grid-row: 2 / 4;
   display: flex;
-  /* justify-content: justified; */
   align-items: center;
-  /* border: 3px solid red; */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .comment-content {
@@ -206,14 +205,20 @@ img {
 .comment-section-3 {
   max-width: 9rem;
   grid-column: 3 / 4;
+  grid-row: 1 / 4;
   display: flex;
+  justify-self: center;
   justify-content: center;
+  align-items: center;
+}
+
+.comment-section-3 a {
+  
 }
 
 .comment-section-3 img {
-  width: 50%;
+  width: 100%;
   height: auto;
-  align-self: center;
 }
 
 /* === Album Show Page === */
@@ -242,6 +247,7 @@ img {
 .record-collection-button {
   grid-area: collection;
   justify-self: center;
+  margin-top: 20px;
 }
 
 .album-name {
@@ -337,4 +343,52 @@ img {
 .show-comment-content {
   grid-column: 1 / 3;
   grid-row: 2 / 5;
+}
+
+/* === User Show Page === */
+
+.record-collection-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 75px auto;
+}
+
+.top-profile {
+  height: 50px;
+}
+
+.top-profile h1 {
+  margin-left: 20px;
+}
+
+.bottom-profile {
+  display: grid;
+}
+
+.bottom-profile img {
+  max-width: 300px;
+  height: auto;
+}
+
+.record-collection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  text-align: center;
+  gap: 20px;
+}
+
+.record-container {
+  border-radius: 5px;
+  margin: 5px;
+  display: grid;
+  max-height: 450px; 
+  grid-template-rows: repeat(5, 1fr);
+  align-items: center;
+}
+
+.record-container a {
+  width: 100%;
+  color: var(--tan-crayola);
+  text-decoration: none;
+  font-size: 30px;
 }

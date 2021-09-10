@@ -4,18 +4,25 @@
 
 <body>
   <%- include('../partials/navbar/_navbar') %>
-  <h1><%= user.username %>'s record collection</h1>
-
-  <div class="record-collection">
-    <% for (let i = 0; i < albums.length; i++) { %>
-      <% const album = albums[i] %>
-      <div class="results-container">
-        <a href="/albums/<%= album.id %>"><p><%= album.name %></p></a>
-        <a href="/albums/<%= album.id %>"><img src="<%= album.images[0].url %>" alt="" /></a>
-      </div>
-    <% } %> 
+  <div class="record-collection-container">
+    <div class="top-profile">
+      <h1><%= user.username %>'s record collection</h1>
+    </div>
+    <div class="bottom-profile">
+      <% if (!albums) { %>
+      <% } else { %>  
+        <div class="record-collection">
+          <% for (let i = 0; i < albums.length; i++) { %>
+            <% const album = albums[i] %>
+            <div class="record-container">
+              <a href="/albums/<%= album.id %>"><p><%= album.name %></p></a>
+              <a href="/albums/<%= album.id %>"><img src="<%= album.images[0].url %>" alt="" /></a>
+            </div>
+          <% } %> 
+        </div>
+      <% } %> 
+    </div>
   </div>
-
   <%- include('../partials/footer/_footer') %>
 </body>
 </html>

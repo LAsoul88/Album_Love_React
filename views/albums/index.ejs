@@ -40,7 +40,7 @@
           <div class="comment-container">
             <div class="comment-section-1">
               <img src="<%= comment.userId.avatar %>" alt="user avatar" />
-              <p><%= comment.userId.username %></p>
+              <a href="/users/<%= comment.userId.id %>"><p><%= comment.userId.username %></p></a>
             </div>
             <div class="comment-section-2">
               <p class="comment-content"><%= comment.content %></p> 

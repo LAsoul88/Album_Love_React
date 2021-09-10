@@ -10,6 +10,15 @@ router.get('/:id', async (req, res, next) => {
       _id: req.params.id 
     });
     
+    if (!foundUser.recordCollection[0]) {
+      const context = {
+        albums: null,
+        user: foundUser,
+      };
+
+      return res.render('users/show', context);
+    }
+
     const userAlbums = await getAlbums(foundUser.recordCollection);
 
     const context = {
