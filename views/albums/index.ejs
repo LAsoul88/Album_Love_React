@@ -43,6 +43,9 @@
               <p><%= comment.userId.username %></p>
             </div>
             <p class="comment-content"><%= comment.content %></p> 
+            <div class="comment-album">
+              <img src="<%= commentAlbums[i].images[0].url %>" />
+            </div>
           </div>
         <% } %> 
       </div>

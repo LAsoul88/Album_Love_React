@@ -2,18 +2,26 @@ const express = require('express');
 const router = express.Router();
 const searchQuery = require('../credentials/spotify_search');
 const getAlbum = require('../credentials/get_album');
+const getAlbums = require('../credentials/get_albums');
 const { Comment, User } = require('../models');
 
 router.get('/', async (req, res, next) => {
   try {
 
     const foundComments = await Comment.find({}).populate("userId").sort({ createdAt: -1 });
-    console.log(foundComments);
+    
+    const albumIds = await foundComments.map((comment) => {
+      return comment.albumId
+    });
+    
+    const commentAlbums = await getAlbums(albumIds);
+    
 
     if (!req.query.search) {
       const context = {
         albums: null,
         comments: foundComments,
+        commentAlbums: commentAlbums,
         user: req.session.currentUser,
       };
       
@@ -25,6 +33,7 @@ router.get('/', async (req, res, next) => {
     const context = {
       albums: foundAlbums,
       comments: foundComments,
+      commentAlbums: commentAlbums,
       user: req.session.currentUser,
     };
     
