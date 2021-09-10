@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { User } = require('../models');
+const getAlbums = require('../credentials/get_albums');
 
 router.get('/:id', async (req, res, next) => {
   try {
@@ -8,8 +9,20 @@ router.get('/:id', async (req, res, next) => {
     const foundUser = await User.findOne({ 
       _id: req.params.id 
     });
+    
+    if (!foundUser.recordCollection[0]) {
+      const context = {
+        albums: null,
+        user: foundUser,
+      };
+
+      return res.render('users/show', context);
+    }
+
+    const userAlbums = await getAlbums(foundUser.recordCollection);
 
     const context = {
+      albums: userAlbums,
       user: foundUser,
     };
 
