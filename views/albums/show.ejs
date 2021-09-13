@@ -55,10 +55,20 @@
       <% for (let i = 0; i < comments.length; i++) { %>
         <% const comment = comments[i] %> 
         <div class="show-comment-container">
-          <img src="<%= comment.userId.avatar %>" alt="user avatar" />
-          <div class="comment-post">
-            <p class="show-comment-username"><%= comment.userId.username %></p>
-            <p class="timestamp"><%= comment.createdAt %></p>
+          <div class="avatar-container">
+            <img src="<%= comment.userId.avatar %>" alt="user avatar" />
+          </div>
+          <div class="comment-post-username">
+            <a href="/users/<%= comment.userId.id %>"><p class="show-comment-username"><%= comment.userId.username %></p></a>
+          </div>
+          <div class="timestamp-container">
+            <p class="timestamp"><%= comment.createdAt.toLocaleString() %></p>
+          </div>
+          <div class="edit-delete-container">
+            <a href=""><i class="fas fa-edit"></i></a>
+            <a href=""><i class="fas fa-trash-alt"></i></a>
+          </div>
+          <div class="comment-content-container">
             <p class="show-comment-content"><%= comment.content %></p>
           </div>
         </div>
