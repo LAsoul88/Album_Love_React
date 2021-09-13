@@ -107,22 +107,19 @@ router.post('/:id', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-
-    console.log(req.body);
     
     const updatedComment = await Comment.findByIdAndUpdate(
-      req.body.comment_id,
+      req.body.edit_id,
       { $set: {
         ...req.body
       }},
       { new: true }
     );
 
-    console.log(updatedComment);
-
+    
     return res.redirect(`/albums/${req.params.id}`);
-
-
+    
+    
   } catch (error) {
     console.log(error);
     req.error = error;

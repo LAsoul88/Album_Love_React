@@ -66,37 +66,34 @@
           </div>
           <% if (session.id === comment.userId.id) { %> 
             <div class="edit-delete-container">
-              <i class="fas fa-edit edit" data-comment-id="<%= comment._id %>"></i>
-              <i class="fas fa-trash-alt delete"></i>
+              <i class="fas fa-edit edit" data-update-id="<%= comment._id %>"></i>
+              <i class="fas fa-trash-alt delete" data-delete-id="<%= comment._id %>"></i>
             </div>
           <% } %>
           <div class="comment-content-container">
             <p class="show-comment-content"><%= comment.content %></p>
           </div>
         </div>
-        <div class="modal edit-modal" id="<%= comment._id %>">
+        <div class="modal edit-modal" id="e<%= comment._id %>">
           <span class="close edit-close">&times;</span>
           <form class="modal-content" action="/albums/<%= album.id %>?_method=PUT" method="POST">
             <input 
               type="hidden"
-              name="comment_id"
-              id="comment_id"
+              name="edit_id"
+              id="edit_id"
               value="<%= comment._id %>"
             />
-            <!-- <input
-              type="text"
-              name="content"
-              id="content"
-              value="%= comment.content %>"
-            /> -->
             <textarea rows="4" cols="50" name="content"
             id="content"><%= comment.content %></textarea>
             <button>Submit</button>
           </form>
         </div>
-        <div class="modal delete-modal">
+        <div class="modal delete-modal" id="d<%= comment._id %>">
           <span class="close delete-close">&times;</span>
-
+          <form class="modal-content" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+            <button>Submit</button>
+          </form>
+          <!-- <button>Cancel</button> -->
         </div>
       <% } %>  
     </div>
