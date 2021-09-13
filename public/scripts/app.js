@@ -1,6 +1,22 @@
+$editModal = $('.edit-modal');
+$edit = $('.edit');
+$editClose = $('.edit-close');
 
 
-const addToCollection = (req, res) => {
-  console.log(req.params.id);
-  // user.recordCollection.push(req.params.id);
-};
+$delete = $('.delete');
+
+
+$edit.on('click', (e) => {
+  console.log(e.target);
+  $(this.$editModal).css('display', 'block');
+});
+
+$editClose.on('click', () => {
+  $editModal.css('display', 'none');
+});
+
+// window.onclick = (e) => {
+//   if (e.target == $editModal) {
+//     $editModal.css('display', 'none');
+//   }
+// };

@@ -64,13 +64,26 @@
           <div class="timestamp-container">
             <p class="timestamp"><%= comment.createdAt.toLocaleString() %></p>
           </div>
-          <div class="edit-delete-container">
-            <a href=""><i class="fas fa-edit"></i></a>
-            <a href=""><i class="fas fa-trash-alt"></i></a>
-          </div>
+          <% if (session.id === comment.userId.id) { %> 
+            <div class="edit-delete-container">
+              <i class="fas fa-edit edit"></i>
+              <a href=""><i class="fas fa-trash-alt" id="delete"></i></a>
+            </div>
+          <% } %>
           <div class="comment-content-container">
             <p class="show-comment-content"><%= comment.content %></p>
           </div>
+        </div>
+        <div class="modal edit-modal">
+          <span class="close edit-close">&times;</span>
+          <form class="modal-content">
+            <input
+              type="text"
+              name="content"
+              value="<%= comment.content %>"
+            />
+            <button>Submit</button>
+          </form>
         </div>
       <% } %>  
     </div>
