@@ -9,10 +9,14 @@ router.get('/:id', async (req, res, next) => {
     const foundUser = await User.findOne({ 
       _id: req.params.id 
     });
+
+    const currentSession = req.session.currentUser;
+    
     
     if (!foundUser.recordCollection[0]) {
       const context = {
         albums: null,
+        session: currentSession,
         user: foundUser,
       };
 
@@ -23,6 +27,7 @@ router.get('/:id', async (req, res, next) => {
 
     const context = {
       albums: userAlbums,
+      session: currentSession,
       user: foundUser,
     };
 
@@ -50,7 +55,7 @@ router.put('/:id', async (req, res, next) => {
         }}
       );
       
-      return res.redirect(`/albums/${req.body.recordCollection}`)
+      return res.redirect(`/albums/${req.body.recordCollection}`);
     };
 
     const updatedUser = await User.findOneAndUpdate(

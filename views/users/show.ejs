@@ -18,8 +18,12 @@
           <% for (let i = 0; i < albums.length; i++) { %>
             <% const album = albums[i] %>
             <div class="record-container">
-              <a href="/albums/<%= album.id %>"><p><%= album.name %></p></a>
-              <a href="/albums/<%= album.id %>"><img src="<%= album.images[0].url %>" alt="" /></a>
+              <div class="album-name-container">
+                <a href="/albums/<%= album.id %>"><p><%= album.name %></p></a>
+              </div>
+              <div class="album-image-container">
+                <a href="/albums/<%= album.id %>"><img src="<%= album.images[0].url %>" alt="" /></a>
+              </div>
             </div>
           <% } %> 
         </div>

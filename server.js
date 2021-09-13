@@ -42,19 +42,19 @@ app.use((req, res, next) => {
 
 app.use(express.static("public"));
 
-app.use(methodOverride("_method"));
 
 app.use(express.urlencoded({
   extended: true
 }));
 
+app.use(methodOverride("_method"));
 app.use(require('./utils/logger'));
 
 
 /* === Routes === */
 app.use('/', controllers.auth);
 app.use('/albums', controllers.album);
-// app.use('/comments', controllers.comment);
+app.use('/comments', controllers.comment);
 app.use('/users', controllers.user);
 
 app.listen(PORT, () => console.log(`Listening for some tunes on port:`, PORT));

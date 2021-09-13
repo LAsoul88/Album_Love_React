@@ -55,12 +55,45 @@
       <% for (let i = 0; i < comments.length; i++) { %>
         <% const comment = comments[i] %> 
         <div class="show-comment-container">
-          <img src="<%= comment.userId.avatar %>" alt="user avatar" />
-          <div class="comment-post">
-            <p class="show-comment-username"><%= comment.userId.username %></p>
-            <p class="timestamp"><%= comment.createdAt %></p>
+          <div class="avatar-container">
+            <img src="<%= comment.userId.avatar %>" alt="user avatar" />
+          </div>
+          <div class="comment-post-username">
+            <a href="/users/<%= comment.userId.id %>"><p class="show-comment-username"><%= comment.userId.username %></p></a>
+          </div>
+          <div class="timestamp-container">
+            <p class="timestamp"><%= comment.createdAt.toLocaleString() %></p>
+          </div>
+          <% if (session.id === comment.userId.id) { %> 
+            <div class="edit-delete-container">
+              <i class="fas fa-edit edit" data-update-id="<%= comment._id %>"></i>
+              <i class="fas fa-trash-alt delete" data-delete-id="<%= comment._id %>"></i>
+            </div>
+          <% } %>
+          <div class="comment-content-container">
             <p class="show-comment-content"><%= comment.content %></p>
           </div>
+        </div>
+        <div class="modal edit-modal" id="e<%= comment._id %>">
+          <span class="close edit-close">&times;</span>
+          <form class="modal-content" action="/albums/<%= album.id %>?_method=PUT" method="POST">
+            <input 
+              type="hidden"
+              name="edit_id"
+              id="edit_id"
+              value="<%= comment._id %>"
+            />
+            <textarea rows="4" cols="50" name="content"
+            id="content"><%= comment.content %></textarea>
+            <button>Submit</button>
+          </form>
+        </div>
+        <div class="modal delete-modal" id="d<%= comment._id %>">
+          <span class="close delete-close">&times;</span>
+          <form class="modal-content" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+            <button>Submit</button>
+          </form>
+          <!-- <button>Cancel</button> -->
         </div>
       <% } %>  
     </div>
