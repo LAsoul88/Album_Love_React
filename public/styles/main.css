@@ -9,6 +9,8 @@
   --cg-red: #D64236;
 }
 
+/* === General === */
+
 body {
   margin: 0;
   background-color: var(--blue-sapphire);
@@ -23,6 +25,29 @@ img {
   height: auto;
 }
 
+.button {
+  width: 5rem;
+  height: auto;
+  color: black;
+  background: var(--blue-sapphire);
+  border: 1px solid black;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  transition: color .4s, background .4s, border .4s;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.collection-button {
+  width: 10rem;
+}
+
+.button:hover {
+  color: #d3d3d3;
+  background: var(--prussian-blue);
+  border: 1px solid #d3d3d3;
+}
 
 /* === Nav === */
 
@@ -254,7 +279,7 @@ img {
   display: grid;
   grid-template-columns: .5fr repeat(8, 1fr);
   grid-template-rows: .25fr;
-  grid-template-areas: '. collection collection collection collection . comment-form comment-form .';
+  grid-template-areas: '. collection collection collection collection comment-form comment-form comment-form .';
 }
 
 .record-collection-button {
@@ -305,10 +330,6 @@ img {
 
 .comment-form {
   grid-area: comment-form;
-}
-
-.submit-button {
-
 }
 
 .show-comments-container {
@@ -389,6 +410,7 @@ img {
 }
 
 .show-comment-content {
+
 }
 
 .modal {
@@ -427,9 +449,19 @@ img {
   cursor: pointer;
 }
 
-.edit {}
+.edit, .delete {
+  cursor: pointer;
+  color: black;
+  transition: color 0.4s;
+}
 
-.delete {}
+.edit:hover {
+  color: var(--tan-crayola);
+}
+
+.delete:hover {
+  color: var(--cg-red);
+}
 
 
 /* === User Show Page === */

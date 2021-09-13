@@ -23,17 +23,17 @@
     <div class="bottom">
       <% if (!user) { %>
         <% } else { %> 
-        <form class="record-collection-button" action="/users/<%= user.id %>?_method=PUT" method="POST">
-          <input 
-            type="hidden"
-            name="recordCollection"
-            id="record-collection"
-            value="<%= album.id %>"
-          />
+          <form class="record-collection-button" action="/users/<%= user.id %>?_method=PUT" method="POST">
+            <input 
+              type="hidden"
+              name="recordCollection"
+              id="record-collection"
+              value="<%= album.id %>"
+            />
           <% if (isInCollection) { %>
-            <button>remove from Collection</button> 
+            <button class="button collection-button">Remove from Collection</button> 
           <% } else { %>
-            <button>add to Collection</button>    
+            <button class="button collection-button">Add to Collection</button>    
           <% } %> 
         </form>
       <% } %> 
@@ -44,9 +44,9 @@
             placeholder="Join the discussion!"         
             name="content"
             id="content"
+            required
           ></textarea>
-
-        <button class="submit-button">Submit</button>
+        <button class="button">Submit</button>
       </form> 
 
     </div>
