@@ -15,14 +15,16 @@ router.get('/', async (req, res, next) => {
     });
     
     const commentAlbums = await getAlbums(albumIds);
-    
+
+    const currentSession = req.session.currentUser;
 
     if (!req.query.search) {
       const context = {
         albums: null,
         comments: foundComments,
         commentAlbums: commentAlbums,
-        user: req.session.currentUser,
+        session: currentSession,
+        user: currentSession,
       };
       
       return res.render('albums/index', context);
@@ -34,7 +36,8 @@ router.get('/', async (req, res, next) => {
       albums: foundAlbums,
       comments: foundComments,
       commentAlbums: commentAlbums,
-      user: req.session.currentUser,
+      session: currentSession,
+      user: currentSession,
     };
     
     return res.render('albums/index', context);
@@ -54,14 +57,15 @@ router.get('/:id', async (req, res, next) => {
     const foundComments = await Comment.find({
       albumId: req.params.id,
     }).populate("userId");
-    console.log(foundComments);
-    
+
+    const currentSession = req.session.currentUser;
+
     let foundUser = null;
     let isInCollection = false;
 
-    if (req.session.currentUser) {
+    if (currentSession) {
       foundUser = await User.findOne({
-      _id: req.session.currentUser.id
+      _id: currentSession.id
       });
 
       isInCollection = foundUser.recordCollection.includes(req.params.id);
@@ -70,6 +74,7 @@ router.get('/:id', async (req, res, next) => {
     const context = {
       album: foundAlbum,
       comments: foundComments,
+      session: currentSession,
       user: foundUser,
       isInCollection: isInCollection
     };
