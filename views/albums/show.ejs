@@ -38,15 +38,14 @@
         </form>
       <% } %> 
       <form class="comment-form" action="/albums/<%= album.id %>" method="POST">
-        <div>
-          <input 
-            type="text"
+          <textarea 
+            rows="4" 
+            cols="50" 
+            placeholder="Join the discussion!"         
             name="content"
             id="content"
-            placeholder="leave a comment"
-            required
-          />
-        </div>
+          ></textarea>
+
         <button class="submit-button">Submit</button>
       </form> 
 
