@@ -96,7 +96,6 @@ router.post('/:id', async (req, res, next) => {
     albumId: req.params.id,
     });
 
-    console.log(createdComment);
     return res.redirect(`/albums/${createdComment.albumId}`);
 
   } catch (error) {
@@ -105,5 +104,30 @@ router.post('/:id', async (req, res, next) => {
     return next();
   }
 });
+
+router.put('/:id', async (req, res, next) => {
+  try {
+
+    console.log(req.body);
+    
+    const updatedComment = await Comment.findByIdAndUpdate(
+      req.body.comment_id,
+      { $set: {
+        ...req.body
+      }},
+      { new: true }
+    );
+
+    console.log(updatedComment);
+
+    return res.redirect(`/albums/${req.params.id}`);
+
+
+  } catch (error) {
+    console.log(error);
+    req.error = error;
+    return next();
+  }
+}); 
 
 module.exports = router;

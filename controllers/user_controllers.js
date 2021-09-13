@@ -55,7 +55,7 @@ router.put('/:id', async (req, res, next) => {
         }}
       );
       
-      return res.redirect(`/albums/${req.body.recordCollection}`)
+      return res.redirect(`/albums/${req.body.recordCollection}`);
     };
 
     const updatedUser = await User.findOneAndUpdate(

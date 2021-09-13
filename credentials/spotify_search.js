@@ -10,7 +10,6 @@ const searchReturn = async (searchQuery) => {
       'Authorization': 'Bearer ' + token
     }
   });
-  /* console.log(query.data.albums.items[0].images[0]); */
   return query.data.albums.items;
 };
 

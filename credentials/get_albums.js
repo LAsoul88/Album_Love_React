@@ -20,9 +20,7 @@ const targets = await axios.get(url, {
     'Authorization': 'Bearer ' + token
   }
 });
-  // console.log('==========')
-  // console.log(targets);
-  // console.log('==========')
+
   return targets.data.albums;
 };
 

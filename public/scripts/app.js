@@ -7,8 +7,9 @@ $delete = $('.delete');
 
 
 $edit.on('click', (e) => {
-  console.log(e.target);
-  $(this.$editModal).css('display', 'block');
+  console.log(e.target.dataset);
+
+  $(`#${e.target.dataset.commentId}`).css('display', 'block');
 });
 
 $editClose.on('click', () => {
