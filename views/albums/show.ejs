@@ -8,7 +8,7 @@
     <div class="top">
       <h2 class="album-name"><%= album.name %></h2>
       <h2 class="artist-name">Artist: <%= album.artists[0].name %></h2>
-      <h3 class="release-date">Release Date: <%= album.release_date %></h3>
+      <h3 class="release-date">Release: <%= album.release_date %></h3>
       <div class="track-list-container">
         Track list: 
         <ol class="track-list">
@@ -61,7 +61,7 @@
             <a href="/users/<%= comment.userId.id %>"><p class="show-comment-username"><%= comment.userId.username %></p></a>
           </div>
           <div class="timestamp-container">
-            <p class="timestamp"><%= comment.createdAt.toLocaleString() %></p>
+            <p class="timestamp"><%= comment.createdAt.toLocaleDateString() %> - <%= comment.createdAt.toLocaleTimeString() %></p>
           </div>
           <% if (session.id === comment.userId.id) { %> 
             <div class="edit-delete-container">

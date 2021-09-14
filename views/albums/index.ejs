@@ -14,7 +14,7 @@
         placeholder="search for an album" 
         required 
       />
-      <input type="submit" value="Submit" id="search-submit" class="search-query"/>
+      <input type="submit" value="Submit" id="search-submit" class="search-query button"/>
     </form>
   </div>
   <div class="homepage-container">
@@ -25,17 +25,26 @@
           <% for( let i = 0; i < albums.length; i++ ) { %>
             <% const album = albums[i] %>
             <div class="results-container">
-              <a href="/albums/<%= album.id %>"><p><%= album.name %></p></a>
-              <a href="/albums/<%= album.id %>"><img src="<%= album.images[0].url %>" alt="" /></a>
+              <div class="results-name-container">
+                <p><a href="/albums/<%= album.id %>"><%= album.name %></a></p>
+              </div>
+              <div class="results-image-container">
+                <a href="/albums/<%= album.id %>"><img src="<%= album.images[0].url %>" alt="" /></a>
+              </div>
             </div>
           <% } %>
+        <% } else { %>
+          <div class="search-prompt">
+            <p class="no-query">Use the search bar above to find albums!</p>
+            <img src="https://media.giphy.com/media/l3vQY93bN54rXJTrO/giphy.gif" alt="search image" />
+          </div>
         <% } %> 
       </div>
     </div>
     <div class="right-home-container">
       <h2>Latest Comments</h2>
       <div class="latest-comments">
-        <% for (let i = 0; i < comments.length; i++) { %>
+        <% for (let i = 0; i < 10; i++) { %>
           <% const comment = comments[i] %>
           <div class="comment-container">
             <div class="comment-section-1">
