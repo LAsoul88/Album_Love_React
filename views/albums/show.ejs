@@ -40,7 +40,8 @@
       <form class="comment-form" action="/albums/<%= album.id %>" method="POST">
           <textarea 
             rows="4" 
-            cols="50" 
+            cols="50"
+            maxlength="600" 
             placeholder="Join the discussion!"         
             name="content"
             id="content"

@@ -468,11 +468,12 @@ img {
 
 .show-page {
   display: grid;
-  grid-template-rows: 1.25fr .25fr 1fr;
+  grid-template-rows: 5fr 1fr 5fr;
 }
 
 .top {
   display: grid;
+  max-height: 50rem;
   grid-template-columns: .5fr repeat(8, 1fr);
   grid-template-rows: .25fr 1fr;
   grid-template-areas:
