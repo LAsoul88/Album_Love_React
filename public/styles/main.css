@@ -16,6 +16,12 @@ body {
   background-color: var(--blue-sapphire);
 }
 
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 h2 {
   font-size: 40px;
 }
@@ -102,11 +108,71 @@ img {
   grid-area: box10;
 }
 
+/* === Register === */
+
+.register-container {
+  width: 20rem;
+  height: 20rem;
+  margin: 6rem;
+  background: #d3d3d3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-size: 23px;
+}
+
+.register-container a {
+  font-size: 15px;
+  text-decoration: none;
+  margin: 1rem;
+}
+
+.register-form {
+  display: table;
+  justify-content: center;
+}
+
+.register-input {
+  display: table-row;
+}
+
+.register-input label, .register-input input {
+  display: table-cell;
+  margin: 1rem;
+}
+
+.register-form .button {
+  background: var(--blue-sapphire);
+  border: 1px solid black;
+}
+
+.register-form .button:hover {
+  background: var(--prussian-blue);
+}
+
+.register-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+/* === Login === */
+
+
+
+
+
+
+
 /* === Homepage === */
 
 .album-search-container {
   display: flex; 
-}
+} 
 
 .album-search {
   display: flex;
