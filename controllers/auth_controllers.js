@@ -4,11 +4,37 @@ const bcrypt = require('bcryptjs');
 const { User } = require('../models');
 
 router.get('/register', (req, res) => {
-  return res.render('auth/register');
+
+  if (!req.session.currentUser) {
+    const context = {
+      session: null,
+    }
+
+    return res.render('auth/register', context);
+  }
+
+  const context = {
+    session: req.session.currentUser,
+  }
+
+  return res.render('auth/register', context);
 });
 
 router.get('/login', (req, res) => {
-  return res.render('auth/login');
+
+  if (!req.session.currentUser) {
+    const context = {
+      session: null,
+    }
+
+    return res.render('auth/login', context);
+  }
+
+  const context = {
+    session: req.session.currentUser,
+  }
+
+  return res.render('auth/login', context);
 });
 
 router.post('/register', async (req, res) => {
