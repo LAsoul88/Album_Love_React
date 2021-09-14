@@ -596,10 +596,6 @@ img {
   overflow: hidden;
 }
 
-.show-comment-content {
-
-}
-
 .modal {
   display: none;
   position: fixed;
@@ -692,15 +688,34 @@ img {
   align-items: center;
 }
 
-.record-container a {
-  width: 100%;
-  color: var(--tan-crayola);
-  text-decoration: none;
+.record-container p {
   font-size: 30px;
+  transition: transform 0.3s;
+}
+
+.record-container p:hover {
+  transform: scale(1.1);
+}
+
+.record-container a {
+  text-decoration: none;
+  color: var(--tan-crayola);
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.record-container a:hover {
+  text-shadow: 0 0 5px rgba(0,0,0,.05), 10px 10px 5px rgba(0,0,0,.1); 
+  color: var(--burnt-sienna);
 }
 
 .record-container img {
   box-shadow: 0 0 5px rgba(0,0,0,.05), 10px 10px 5px rgba(0,0,0,.1);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.record-container img:hover {
+  box-shadow: none;
+  transform: scale(1.1);
 }
 
 .album-name-container {
