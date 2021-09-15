@@ -224,9 +224,13 @@ img {
 }
 
 .login-container a {
-  font-size: 15px;
+  font-size: 1.5rem;
   text-decoration: none;
   margin: 1rem;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
 }
 
 .login-form {
@@ -243,12 +247,12 @@ img {
   margin: 1rem;
 }
 
-.login-form .button {
-  background: var(--blue-sapphire);
+.login-button-container .button {
+  background: #d3d3d3;
   border: 1px solid black;
 }
 
-.login-form .button:hover {
+.login-button-container .button:hover {
   background: var(--prussian-blue);
 }
 
@@ -256,6 +260,10 @@ img {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.login-error {
+  color: var(--cg-red);
 }
 
 /* === Homepage === */

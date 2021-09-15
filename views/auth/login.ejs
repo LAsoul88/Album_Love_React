@@ -34,6 +34,11 @@
           <button class="button">Submit</button>
         </div>
       </form>
+      <% if (mismatch) { %> 
+        <div class="login-error">
+          <p>This email/password combination does not exist.</p>
+        </div>
+      <% } %> 
       <a href="/register">Need an account? Register here!</a>
     </div>
   </main>

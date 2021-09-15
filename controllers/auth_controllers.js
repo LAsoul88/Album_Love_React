@@ -30,6 +30,7 @@ router.get('/login', (req, res) => {
 
   if (!req.session.currentUser) {
     const context = {
+      mismatch: false,
       session: null,
     }
 
@@ -37,6 +38,7 @@ router.get('/login', (req, res) => {
   }
 
   const context = {
+    mismatch: false,
     session: req.session.currentUser,
   }
 
@@ -107,13 +109,25 @@ router.post('/login', async (req, res) => {
     const foundUser = await User.findOne({
       email: req.body.email
     });
+
     if (!foundUser) {
-      return res.redirect('/register');
+      const context = {
+        mismatch: true,
+        session: null
+      }
+
+      return res.render('auth/login', context);
     }
 
     const match = await bcrypt.compare(req.body.password, foundUser.password);
+
     if (!match) {
-      return console.log('no match');
+      const context = {
+        mismatch: true,
+        session: null
+      }
+
+      return res.render('auth/login', context);
     }
 
     req.session.currentUser = {
