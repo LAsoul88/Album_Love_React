@@ -7,6 +7,9 @@ router.get('/register', (req, res) => {
 
   if (!req.session.currentUser) {
     const context = {
+      username: false,
+      email: false,
+      password: false,
       session: null,
     }
 
@@ -14,6 +17,9 @@ router.get('/register', (req, res) => {
   }
 
   const context = {
+    username: false,
+    email: false,
+    password: false,
     session: req.session.currentUser,
   }
 
@@ -37,21 +43,49 @@ router.get('/login', (req, res) => {
   return res.render('auth/login', context);
 });
 
+
+
 router.post('/register', async (req, res) => {
   try {
 
-    // add check for password and password-confirm to match
-
-    // also, cover up the password in the input field while text
-
     const foundUser = await User.exists({
-      $or: [
-        { email: req.body.email },
-        { username: req.body.username }
-      ],
+      username: req.body.username
     });
+
     if (foundUser) {
-      return res.redirect('/login');
+      const context = {
+        username: true,
+        email: false,
+        password: false,
+        session: null,
+      }
+      return res.render('auth/register', context);
+    }
+
+    const foundEmail = await User.exists({
+      email: req.body.email
+    });
+
+    if (foundEmail) {
+      const context = {
+        username: false,
+        email: true,
+        password: false,
+        session: null,
+      }
+
+      return res.render('auth/register', context);
+    }
+
+    if (req.body.password_confirm !== req.body.password) {
+      const context = {
+        username: false,
+        email: false,
+        password: true,
+        session: null,
+      }
+
+      return res.render('auth/register', context);
     }
 
     const salt = await bcrypt.genSalt(10);

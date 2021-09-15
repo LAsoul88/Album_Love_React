@@ -151,7 +151,7 @@ img {
 
 .register-container {
   width: 20rem;
-  height: 20rem;
+  max-height: 25rem;
   margin: 3rem;
   background: #d3d3d3;
   display: flex;
@@ -164,9 +164,14 @@ img {
 }
 
 .register-container a {
-  font-size: 15px;
+  font-size: 1.5rem;
   text-decoration: none;
   margin: 1rem;
+  color: var(--cosmic-cobalt);
+}
+
+.register-container a:hover {
+  text-decoration: underline;
 }
 
 .register-form {
@@ -184,7 +189,7 @@ img {
 }
 
 .register-form .button {
-  background: var(--blue-sapphire);
+  background: #d3d3d3;
   border: 1px solid black;
 }
 
@@ -196,6 +201,10 @@ img {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.register-error {
+  color: var(--cg-red);
 }
 
 /* === Login === */
