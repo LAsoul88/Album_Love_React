@@ -50,6 +50,12 @@ app.use(express.urlencoded({
 app.use(methodOverride("_method"));
 app.use(require('./utils/logger'));
 
+app.get('/', (req, res) => {
+  if (!req.session.currentUser) {
+    return res.redirect('/albums');
+  }
+  return res.redirect(`/users/${req.session.currentUser.id}`);
+});
 
 /* === Routes === */
 app.use('/', controllers.auth);
