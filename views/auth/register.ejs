@@ -5,50 +5,57 @@
 <body>
   <%- include('../partials/navbar/_navbar') %>
   <main>
-    <div>
-      <form action="/register" method="POST">
-        <div class="register-input">
-          <label for="username">username:</label>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="choose a username"
-            required
-          />
+    <h1>Registration</h1>
+    <div class="register-container">
+      <form class="register-form" action="/register" method="POST">
+        <div>
+          <div class="register-input">
+            <label for="username">username:</label>
+            <input
+              type="text"
+              maxlength="25"
+              name="username"
+              id="username"
+              placeholder="choose a username"
+              required
+            />
+          </div>
+          <div class="register-input">
+            <label for="email">email:</label>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="enter email"
+              required
+            />
+          </div>
+          <div class="register-input">
+            <label for="password">password:</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="create password"
+              required
+            />
+          </div>
+          <div class="register-input">
+            <label for="password-confirm">confirm:</label>
+            <input
+              type="password"
+              name="password-confirm"
+              id="password-confirm"
+              placeholder="confirm password"
+              required
+            />
+          </div>
         </div>
-        <div class="register-input">
-          <label for="email">email:</label>
-          <input
-            type="text"
-            name="email"
-            id="email"
-            placeholder="enter email"
-            required
-          />
+        <div class="register-button-container">
+          <button class="button">Submit</button>
         </div>
-        <div class="register-input">
-          <label for="password">password:</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="create password"
-            required
-          />
-        </div>
-        <div class="register-input">
-          <label for="password-confirm">confirm:</label>
-          <input
-            type="password"
-            name="password-confirm"
-            id="password-confirm"
-            placeholder="confirm password"
-            required
-          />
-        </div>
-        <button>Submit</button>
       </form>
+      <a href="/login">Already have an account? Login here!</a>
     </div>
   </main>
 

@@ -4,55 +4,60 @@
 
 <body>
   <%- include('../partials/navbar/_navbar') %>
+
   <div class="show-page">
     <div class="top">
       <h2 class="album-name"><%= album.name %></h2>
       <h2 class="artist-name">Artist: <%= album.artists[0].name %></h2>
-      <h3 class="release-date">Release Date: <%= album.release_date %></h3>
+      <h3 class="release-date">Release: <%= album.release_date %></h3>
       <div class="track-list-container">
         Track list: 
-        <ol class="track-list">
-          <% for (let i = 0; i < album.tracks.items.length; i++) { %> 
+        
+          <% for (let i = 0; i < album.tracks.items.length; i++) { %>  
             <% const track = album.tracks.items[i] %>
-            <li class="track-name"><%= track.name %></li> 
+            <div class="track-name"><%= i + 1 %>. <%= track.name %></div> 
           <% } %> 
-        </ol>
+        
       </div>
       <img src="<%= album.images[0].url %>" alt="<%= album.name %> image" />
-    </div>
-    <div class="bottom">
+      <div class="comment-form-container">
+        <p class="session-username"><%= session.username %></p>
+        <img src="<%= session.avatar %>" alt="avatar" />
+        <p class="comment-invite">What do you think of <span><%= album.name %></span>? Let us know!</p>
+        <form class="comment-form" action="/albums/<%= album.id %>" method="POST">
+          <textarea 
+            rows="4" 
+            cols="50"
+            maxlength="400" 
+            placeholder="Join the discussion!"         
+            name="content"
+            id="content"
+            required
+          ></textarea>
+          <button class="button comment-submit-button">Submit</button>
+        </form>
+      </div>
+      
       <% if (!user) { %>
-        <% } else { %> 
+      <% } else { %> 
         <form class="record-collection-button" action="/users/<%= user.id %>?_method=PUT" method="POST">
           <input 
             type="hidden"
             name="recordCollection"
             id="record-collection"
             value="<%= album.id %>"
-          />
+            />
           <% if (isInCollection) { %>
-            <button>remove from Collection</button> 
+            <button class="button remove-button">Remove from Collection</button> 
           <% } else { %>
-            <button>add to Collection</button>    
+            <button class="button add-button">Add to Collection</button>    
           <% } %> 
         </form>
-      <% } %> 
-      <form class="comment-form" action="/albums/<%= album.id %>" method="POST">
-        <div>
-          <input 
-            type="text"
-            name="content"
-            id="content"
-            placeholder="leave a comment"
-            required
-          />
-        </div>
-        <button class="submit-button">Submit</button>
-      </form> 
-
+      <% } %>  
     </div>
-    <div class="show-comments-container">
-      <% for (let i = 0; i < comments.length; i++) { %>
+
+    <div class="bottom">
+      <% for (let i = comments.length - 1; i >= 0; i--) { %>
         <% const comment = comments[i] %> 
         <div class="show-comment-container">
           <div class="avatar-container">
@@ -62,7 +67,7 @@
             <a href="/users/<%= comment.userId.id %>"><p class="show-comment-username"><%= comment.userId.username %></p></a>
           </div>
           <div class="timestamp-container">
-            <p class="timestamp"><%= comment.createdAt.toLocaleString() %></p>
+            <p class="timestamp"><%= comment.createdAt.toLocaleDateString() %> - <%= comment.createdAt.toLocaleTimeString() %></p>
           </div>
           <% if (session.id === comment.userId.id) { %> 
             <div class="edit-delete-container">
@@ -98,7 +103,6 @@
       <% } %>  
     </div>
   </div>
-
 
   <%- include('../partials/footer/_footer') %>
 </body>

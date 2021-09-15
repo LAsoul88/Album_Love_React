@@ -19,7 +19,7 @@
             <% const album = albums[i] %>
             <div class="record-container">
               <div class="album-name-container">
-                <a href="/albums/<%= album.id %>"><p><%= album.name %></p></a>
+                <span class="results-name"><a href="/albums/<%= album.id %>"><%= album.name %></a></span>
               </div>
               <div class="album-image-container">
                 <a href="/albums/<%= album.id %>"><img src="<%= album.images[0].url %>" alt="" /></a>
