@@ -1,5 +1,6 @@
 :root {
   --prussian-blue: #163251;
+  --cosmic-cobalt: #3B347E;
   --blue-sapphire: #1E6982;
   --metallic-seaweed: #2C818C;
   --morning-blue: #7B9D97;
@@ -468,86 +469,160 @@ img {
 
 .show-page {
   display: grid;
-  grid-template-rows: 5fr 1fr 5fr;
+  grid-template-rows: 5fr 1fr auto-fill;
+  gap: 10px;
+  color: var(--tan);
 }
 
 .top {
+  grid-row: 1 / 2;
   display: grid;
-  max-height: 50rem;
-  grid-template-columns: .5fr repeat(8, 1fr);
-  grid-template-rows: .25fr 1fr;
+  max-height: 80rem;
+  grid-template-columns: .25fr repeat(8, 1fr) .5fr;
+  grid-template-rows: .25fr 2fr 2fr .25fr;
   grid-template-areas:
-    '. album-title album-title album-title album-title artist artist release-date release-date'
-    '. album-art album-art album-art album-art track-list track-list track-list track-list';
+    '. album-title album-title album-title album-title artist artist release-date release-date .'
+    '. album-art album-art album-art album-art track-list track-list track-list track-list .'
+    '. album-art album-art album-art album-art comment-form comment-form comment-form comment-form .'
+    '. collection collection collection collection . . . . .';
+    gap: 20px;
 }
 
+
 .bottom {
+  grid-row: 3 / 4;
   display: grid;
-  grid-template-columns: .5fr repeat(8, 1fr);
-  grid-template-rows: .25fr;
-  grid-template-areas: '. collection collection collection collection comment-form comment-form comment-form .';
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
 }
 
 .record-collection-button {
   grid-area: collection;
   justify-self: center;
-  margin-top: 20px;
+}
+
+.add-button {
+  width: 100%;
+}
+
+.remove-button {
+  width: 100%;
+}
+
+.remove-button:hover {
+  background: var(--cg-red);
 }
 
 .album-name {
   grid-area: album-title;
   text-align: center;
   align-self: center;
-  font-size: 2.5rem;
+  font-size: 4rem;
 }
 
 .artist-name {
   grid-area: artist;
   text-align: center;
   align-self: center;
-  font-size: 1.75rem;
+  font-size: 3rem;
 }
 
 .release-date {
   grid-area: release-date;
   text-align: center;
   align-self: center;
+  font-size: 3rem;
 }
 
 .track-list-container {
   grid-area: track-list;
-  justify-self: center;
-}
-
-.track-list {
-  font-size: 1.5rem;
+  width: 100%;
+  display: grid;
+  font-size: 3rem;
 }
 
 .track-name {
-
+  font-size: 2rem;
 }
 
-.show-page img {
+.top img {
   grid-area: album-art;
   width: 100%;
   height: auto;
   box-shadow: 0 0 5px rgba(0,0,0,.05), 10px 10px 5px rgba(0,0,0,.1);
 }
 
-.comment-form {
+.comment-form-container {
   grid-area: comment-form;
+  align-self: start;
+  justify-self: center;
+  max-height: 20rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: .5fr repeat(2, 1fr);
+  background: var(--metallic-seaweed);
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,.05), 10px 10px 5px rgba(0,0,0,.1);
+  padding-right: 20px;
 }
 
-.show-comments-container {
+.session-username {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--burnt-sienna);
+}
+
+.comment-form-container img {
+  max-width: 60%;
+  height: auto;
+  border-radius: 100px;
+  grid-column: 1 / 2;
+  grid-row: 2 / 4;
+  justify-self: center;
+  box-shadow: none;
+}
+
+.comment-invite {
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
+  text-align: center;
+  align-self: center;
+  font-size: 2rem;
+}
+
+.comment-invite span {
+  color: var(--burnt-sienna);
+}
+
+.comment-form {
+  grid-column: 2 / 4;
+  grid-row: 2 / 4;
+  align-self: center;
   display: grid;
-  grid-template-columns: repeat(3, minmax(280px, 1fr));
-  grid-template-rows: auto;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.comment-form textarea {
+  grid-column: 2 / 4;
+  grid-row: 1 / 3;
+  height: 7rem;
+}
+
+.comment-submit-button {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  height: 2.5rem;
+  align-self: center;
 }
 
 .show-comment-container {
   background: var(--metallic-seaweed);
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1.25fr .75fr;
   grid-template-rows: 1fr 3fr;
   grid-template-areas: 
     'username timestamp edit-delete'
@@ -555,9 +630,10 @@ img {
   border: 2px solid black;
   border-radius: 5px;
   max-width: 100%;
-  max-height: 250px;
+  max-height: 20rem;
   box-shadow: 0 0 5px rgba(0,0,0,.05), 10px 10px 5px rgba(0,0,0,.1);
   margin: 10px;
+  padding-bottom: 10px;
 }
 
 .avatar-container {
@@ -582,25 +658,26 @@ img {
 
 .comment-post-username a {
   text-decoration: none;
+  color: var(--tan-crayola);
 }
 
 .show-comment-username {
-  font-size: 20px;
+  font-size: 1.5rem;
   text-align: center;
 }
 
 .timestamp-container {
   grid-area: timestamp;
   display: flex;
-  justify-content: left;
-  margin-right: 20px;
+  width: 100%;
+  justify-content: right;
 }
 
 .timestamp {
   align-self: center;
-  text-align: center;
-  overflow: visible; 
-  white-space: nowrap;
+  text-align: right;
+  font-size: 1.5rem;
+  color: var(--cosmic-cobalt);
 }
 
 .edit-delete-container {
@@ -618,6 +695,11 @@ img {
   justify-content: center;
   align-items: center;
   overflow: hidden;
+}
+
+.show-comment-content {
+  font-size: 1.5rem;
+  color: var(--tan);
 }
 
 .modal {
