@@ -63,4 +63,15 @@ app.use('/albums', controllers.album);
 app.use('/comments', controllers.comment);
 app.use('/users', controllers.user);
 
+
+// 404
+app.get("/*", (req, res) => {
+  const context = {
+    error: req.error,
+    session: req.session.currentUser,
+  };
+
+  res.render("error/404", context);
+});
+
 app.listen(PORT, () => console.log(`Listening for some tunes on port:`, PORT));
