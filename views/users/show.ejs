@@ -7,7 +7,7 @@
   <div class="record-collection-container">
     <div class="top-profile">
       <h1 class="record-collection-heading"><span><%= user.username %></span>'s record collection</h1>
-      <% if (user._id === session.id) { %> 
+      <% if (user._id === session.id || !session) { %> 
         <div class="edit-avatar">
           <p class="avatar" data-avatar-id="<%= user._id %>">Change Avatar</p>
         </div>
