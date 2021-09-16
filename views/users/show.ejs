@@ -7,10 +7,12 @@
   <div class="record-collection-container">
     <div class="top-profile">
       <h1 class="record-collection-heading"><span><%= user.username %></span>'s record collection</h1>
-      <% if (user._id === session.id || !session) { %> 
-        <div class="edit-avatar">
-          <p class="avatar" data-avatar-id="<%= user._id %>">Change Avatar</p>
-        </div>
+      <% if (session) { %>
+        <% if (user._id === session.id) { %>  
+          <div class="edit-avatar">
+            <p class="avatar" data-avatar-id="<%= user._id %>">Change Avatar</p>
+          </div>
+        <% } %> 
       <% } %> 
             <div class="modal avatar-modal" id="<%= user._id %>">
               <form class="modal-content" action="/users/<%= user._id %>/avatar?_method=PUT" method="POST">
