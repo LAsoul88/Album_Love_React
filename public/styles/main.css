@@ -123,7 +123,7 @@ img {
   font-family: 'Karantina', cursive;
 }
 
-.avatar {
+.avatar-image {
   grid-area: box8;
   width: 5rem;
   height: auto; 
@@ -805,7 +805,7 @@ img {
   cursor: pointer;
 }
 
-.edit, .delete {
+.edit, .delete, .avatar {
   cursor: pointer;
   color: black;
   transition: color 0.4s;
@@ -819,6 +819,22 @@ img {
   color: var(--cg-red);
 }
 
+.avatar {
+  background: var(--tan);
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  transition: background 0.3s, color 0.3s, border 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.avatar:hover {
+  background: var(--prussian-blue);
+  color: #d3d3d3;
+  border: 1px solid #d3d3d3;
+  transform: scale(1.1);
+  box-shadow: 0 0 5px rgba(0,0,0,.05), 10px 10px 5px rgba(0,0,0,.1);
+}
 
 /* === User Show Page === */
 
@@ -829,11 +845,26 @@ img {
 }
 
 .top-profile {
-  height: 50px;
+  height: 4rem;
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.edit-avatar {
+  grid-column: 2 / 3;
+  justify-self: right;
+  text-align: right;
+  font-size: 3rem;
+  margin-right: 2rem;
 }
 
 .record-collection-heading {
-  margin-left: 20px;
+  grid-column: 1 / 2;
+  text-align: left;
+  justify-self: left;
+  margin-left: 2rem;
   color: var(--tan);
 }
 
@@ -866,7 +897,8 @@ img {
 }
 
 .collection-invite a:hover {
-  color: var(--burnt-sienna);  text-shadow: 0 0 5px rgba(0,0,0,.05), 10px 10px 5px rgba(0,0,0,.1);
+  color: var(--burnt-sienna);  
+  text-shadow: 0 0 5px rgba(0,0,0,.05), 10px 10px 5px rgba(0,0,0,.1);
 }
 
 .bottom-profile img {
@@ -934,3 +966,4 @@ img {
   text-decoration: none;
   color: var(--cosmic-cobalt);
 }
+

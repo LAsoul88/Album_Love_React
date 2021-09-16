@@ -7,6 +7,29 @@
   <div class="record-collection-container">
     <div class="top-profile">
       <h1 class="record-collection-heading"><span><%= user.username %></span>'s record collection</h1>
+      <% if (user.id === session.id) { %> 
+        <div class="edit-avatar">
+          <p class="avatar" data-avatar-id="<%= user.id %>">Change Avatar</p>
+        </div>
+      <% } %> 
+            <div class="modal avatar-modal" id="<%= user.id %>">
+              <form class="modal-content" action="/users/<%= user.id %>/avatar?_method=PUT" method="POST">
+                <span class="close avatar-close">&times;</span>
+                <input 
+                  type="hidden"
+                  name="avatar_id"
+                  id="avatar_id"
+                  value="<%= user.id %>"
+                />
+                <input
+                  type="text"
+                  name="avatar"
+                  id="avatar"
+                  value="<%= user.avatar %>" 
+                />
+                <button class="button">Submit</button>
+              </form>
+            </div>
     </div>
     <div class="bottom-profile">
       <% if (!albums) { %>
