@@ -4,9 +4,10 @@ require('dotenv').config();
 const connectionStr = process.env.MONGODB_URI; 
 // const connectionStr = 'mongodb://localhost:27017/albumlove';
 
-mongoose.connect(connectionStr, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  family: 4,
 });
 
 mongoose.connection.on('connected', () => {

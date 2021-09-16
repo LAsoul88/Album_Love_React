@@ -534,6 +534,8 @@ img {
   text-align: center;
   align-self: center;
   font-size: 4rem;
+  color: var(--cosmic-cobalt);
+  text-shadow: 0 0 5px rgba(0,0,0,.05), 10px 10px 5px rgba(0,0,0,.1);
 }
 
 .artist-name {
@@ -543,11 +545,19 @@ img {
   font-size: 3rem;
 }
 
+.artist-name span {
+  color: var(--burnt-sienna);
+}
+
 .release-date {
   grid-area: release-date;
   text-align: center;
   align-self: center;
   font-size: 3rem;
+}
+
+.release-date span {
+  color: var(--morning-blue);
 }
 
 .track-list-container {
@@ -557,12 +567,13 @@ img {
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(14, 1fr);
+  grid-template-rows: repeat(13, 1fr);
   gap: 10px;
 }
 
 .track-name {
   font-size: 1.5rem;
+  color: var(--tan-crayola);
 }
 
 .top img {
@@ -654,6 +665,7 @@ img {
   box-shadow: 0 0 5px rgba(0,0,0,.05), 10px 10px 5px rgba(0,0,0,.1);
   margin: 10px;
   padding-bottom: 10px;
+  padding-right: 10px;
 }
 
 .avatar-container {
@@ -674,6 +686,7 @@ img {
   grid-area: username;
   display: flex;
   justify-content: center;
+  max-width: 100%;
 }
 
 .comment-post-username a {
@@ -682,7 +695,7 @@ img {
 }
 
 .show-comment-username {
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-align: center;
 }
 
@@ -714,11 +727,11 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .show-comment-content {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   color: var(--tan);
 }
 
@@ -741,7 +754,20 @@ img {
   margin: auto;
   padding: 20px;
   border: 2px solid #888;
-  width: 80%;
+  width: 25%;
+}
+
+.modal-content p {
+  font-size: 2rem;
+  color: var(--tan-crayola);
+}
+
+.delete-modal .modal-content {
+  width: 20%;
+}
+
+.delete-modal .button:hover {
+  background: var(--cg-red);
 }
 
 .close {

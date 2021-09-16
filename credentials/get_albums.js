@@ -15,15 +15,15 @@ const getAlbums = async (arr) => {
     console.log('bad url');
     return;
   } else {
-  const token = await getToken();
-  const targets = await axios.get(url, {
-    headers: {
-      'Authorization': 'Bearer ' + token
-    }
-  });
-  console.log(targets.data.albums);
-  return targets.data.albums;
-}
+    const token = await getToken();
+    const targets = await axios.get(url, {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    });
+    console.log(targets.data.albums);
+    return targets.data.albums;
+  }
 };
 
 module.exports = getAlbums;
