@@ -7,9 +7,8 @@ router.get('/:id', async (req, res, next) => {
   try {
 
     const foundUser = await User.findById(req.params.id);
+
     const currentSession = req.session.currentUser;
-    
-    console.log('current session: ', currentSession);
     
     if (!foundUser.recordCollection[0]) {
       const context = {
@@ -30,6 +29,7 @@ router.get('/:id', async (req, res, next) => {
     };
 
     return res.render('users/show', context);
+    
   } catch (error) {
     console.log(error);
     req.error = error;
@@ -78,7 +78,6 @@ router.put('/:id/avatar', async (req, res, next) => {
       { avatar: req.body.avatar }
     );
       
-    console.log(updatedUser);
     return res.redirect(`/users/${req.params.id}`);
 
   } catch (error) {

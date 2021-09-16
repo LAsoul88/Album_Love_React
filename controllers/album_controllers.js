@@ -78,6 +78,7 @@ router.get('/:id', async (req, res, next) => {
     };
 
     return res.render('albums/show', context);
+
   } catch (error) {
     console.log(error);
     req.error = error;
@@ -113,10 +114,8 @@ router.put('/:id', async (req, res, next) => {
       }},
       { new: true }
     );
-
     
     return res.redirect(`/albums/${req.params.id}`);
-    
     
   } catch (error) {
     console.log(error);
