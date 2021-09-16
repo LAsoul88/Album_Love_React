@@ -350,6 +350,7 @@ img {
   justify-content: center;
   text-align: center;
   gap: 20px;
+  margin: 20px;
 }
 
 .results-name {
