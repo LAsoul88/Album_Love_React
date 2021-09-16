@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head/_head', { page: album.name }) %>
-
 <body>
   <%- include('../partials/navbar/_navbar') %>
-
   <div class="show-page">
     <div class="top">
       <h2 class="album-name"><%= album.name %></h2>
       <h2 class="artist-name">Artist: <span><%= album.artists[0].name %></span></h2>
       <h3 class="release-date">Release: <span><%= album.release_date %></span></h3>
-      <div class="track-list-container">
-        
+      <div class="track-list-container">        
           <% for (let i = 0; i < album.tracks.items.length; i++) { %>  
             <% const track = album.tracks.items[i] %>
             <div class="track-name"><%= i + 1 %>. <%= track.name %></div> 
           <% } %> 
-        
       </div>
       <img src="<%= album.images[0].url %>" alt="<%= album.name %> image" />
-
       <% if (!session) { %> 
         <div class="comment-form-container">
           <div class="registration-pic-container">
@@ -49,8 +44,7 @@
             <button class="button comment-submit-button">Submit</button>
           </form>
         </div>
-      <% } %> 
-      
+      <% } %>      
       <% if (!user) { %>
       <% } else { %> 
         <form class="record-collection-button" action="/users/<%= user.id %>?_method=PUT" method="POST">
@@ -68,7 +62,6 @@
         </form>
       <% } %>  
     </div>
-
     <div class="bottom">
       <% for (let i = comments.length - 1; i >= 0; i--) { %>
         <% const comment = comments[i] %> 
@@ -117,12 +110,10 @@
               <button class="button">Submit</button>
             </div>
           </form>
-          <!-- <button>Cancel</button> -->
         </div>
       <% } %>  
     </div>
   </div>
-
   <!-- %- include('../partials/footer/_footer') %> -->
 </body>
 </html>

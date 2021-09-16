@@ -1,14 +1,18 @@
-$editModal = $('.edit-modal');
-$edit = $('.edit');
-$editClose = $('.edit-close');
+const $editModal = $('.edit-modal');
+const $edit = $('.edit');
+const $editClose = $('.edit-close');
 
-$deleteModal = $('.delete-modal');
-$delete = $('.delete');
-$deleteClose = $('.delete-close');
+const $deleteModal = $('.delete-modal');
+const $delete = $('.delete');
+const $deleteClose = $('.delete-close');
 
-$avatarModal = $('.avatar-modal');
-$avatar = $('.avatar');
-$avatarClose = $('.avatar-close');
+const $avatarModal = $('.avatar-modal');
+const $avatar = $('.avatar');
+const $avatarClose = $('.avatar-close');
+
+// const $html = $('html');
+
+
 
 $edit.on('click', (e) => {
   $(`#e${e.target.dataset.updateId}`).css('display', 'block');
@@ -34,8 +38,8 @@ $avatarClose.on('click', () => {
   $avatarModal.css('display', 'none');
 });
 
-// window.onclick = (e) => {
-//   if (e.target == $editModal) {
-//     $editModal.css('display', 'none');
-//   }
-// };
+// $html.on('click', () => {
+//   $editModal.css('display', 'none');
+//   $deleteModal.css('display', 'none');
+//   $avatarModal.css('display', 'none');
+// });
