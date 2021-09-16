@@ -8,7 +8,7 @@ A music lover would bring home their new music, pop it on to the record player a
 
 Album Love is a social media website aimed at reuniting listeners with the pleasure of the album cover. It can be a companion to any listener that would like to see the cover as one would have in days past.
 
-# <img src="images/GiantSteps.jpeg" alt="Giant Steps" />
+# <img src="public/images/GiantSteps.jpeg" alt="Giant Steps" />
 
 ### What can reasonably be finished
 
@@ -70,19 +70,19 @@ This is the [Color Palette](https://coolors.co/d64236-e46947-e89c6e-e1c5a1-7b9d9
 
 ### Login Page
 
-# <img src="images/Login.png" alt="Giant Steps" />
+# <img src="public/images/Login.png" alt="Login page" />
 
 ### Profile Page
 
-# <img src="images/ProfileShow.png" alt="Giant Steps" />
+# <img src="public/images/ProfileShow.png" alt="Profile page" />
 
 ### Home Page
 
-# <img src="images/Home.png" alt="Giant Steps" />
+# <img src="public/images/Home.png" alt="Home page" />
 
 ### Album Page
 
-# <img src="images/AlbumShow.png" alt="Giant Steps" />
+# <img src="public/images/AlbumShow.png" alt="Album show page" />
 
 
 ## Data Models
@@ -93,7 +93,7 @@ In addition, all album information will be sourced and rendered from the Spotify
 
 While the API will not be a model in the Album Love database, it will still share a relationship with the User and Comment models, so it is included in this relationship chart.
 
-# <img src="images/Models.png" alt="data models" />
+# <img src="public/images/Models.png" alt="data models" />
 
 ### User
 
@@ -136,6 +136,7 @@ Since all of this information will be sourced from Spotify's API, we won't need 
 
 - Finish styling and organizing elements of ejs pages for deployment
 - Adjusting css/js for the purposes of responsiveness to user input
+- Mobile responsiveness
 - Refactor code for professional formatting and readability
 - Deploy application
 

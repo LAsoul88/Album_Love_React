@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head/_head', { page: user.username }) %>
+
+<body>
+  <%- include('../partials/navbar/_navbar') %>
+  <div class="record-collection-container">
+    <div class="top-profile">
+      <h1 class="record-collection-heading"><span><%= user.username %></span>'s record collection</h1>
+      <% if (user.id === session.id) { %> 
+        <div class="edit-avatar">
+          <p class="avatar" data-avatar-id="<%= user.id %>">Change Avatar</p>
+        </div>
+      <% } %> 
+            <div class="modal avatar-modal" id="<%= user.id %>">
+              <form class="modal-content" action="/users/<%= user.id %>/avatar?_method=PUT" method="POST">
+                <p>Paste the link to an image here!</p>
+                <span class="close avatar-close">&times;</span>
+                <input 
+                  type="hidden"
+                  name="avatar_id"
+                  id="avatar_id"
+                  value="<%= user.id %>"
+                />
+                <input
+                  type="text"
+                  name="avatar"
+                  id="avatar"
+                  value="<%= user.avatar %>" 
+                />
+                <button class="button">Submit</button>
+              </form>
+            </div>
+    </div>
+    <div class="bottom-profile">
+      <% if (!albums) { %>
+        <div>
+          <p class="collection-invite">Time to dig for some records and find your favorites on the <a href="/albums">homepage!</a></p>
+        </div>
+      <% } else { %>  
+        <div class="record-collection">
+          <% for (let i = 0; i < albums.length; i++) { %>
+            <% const album = albums[i] %>
+            <div class="record-container">
+              <div class="album-name-container">
+                <span class="results-name"><a href="/albums/<%= album.id %>"><%= album.name %></a></span>
+              </div>
+              <div class="album-image-container">
+                <a href="/albums/<%= album.id %>"><img src="<%= album.images[0].url %>" alt="" /></a>
+              </div>
+            </div>
+          <% } %> 
+        </div>
+      <% } %> 
+    </div>
+  </div>
+  <!-- %- include('../partials/footer/_footer') %> -->
+</body>
+</html>
