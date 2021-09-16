@@ -11,15 +11,18 @@ const getAlbums = async (arr) => {
     url += arr[i] + '%2C';
   }
 }
-
-const token = await getToken();
-const targets = await axios.get(url, {
-  headers: {
-    'Authorization': 'Bearer ' + token
+  if (url === `https://api.spotify.com/v1/albums?ids=`) {
+    console.log('bad url');
+    return;
+  } else {
+    const token = await getToken();
+    const targets = await axios.get(url, {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    });
+    return targets.data.albums;
   }
-});
-
-  return targets.data.albums;
 };
 
 module.exports = getAlbums;

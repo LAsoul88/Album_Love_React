@@ -22,14 +22,14 @@ app.set("view engine", "ejs");
 app.use(
   session({
     store: MongoStore.create({
-      mongoUrl: 'mongodb://localhost:27017/albumlove'
+      mongoUrl: process.env.MONGODB_URI
     }),
-    secret: 'so secret',
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24 * 7 * 2
-    }
+      maxAge: 1000 * 60 * 60 * 24 * 7 * 2,
+    },
   })
 );
 
@@ -48,13 +48,31 @@ app.use(express.urlencoded({
 }));
 
 app.use(methodOverride("_method"));
+
 app.use(require('./utils/logger'));
 
+app.get('/', (req, res) => {
+  if (!req.session.currentUser) {
+    return res.redirect('/albums');
+  }
+  return res.redirect(`/users/${req.session.currentUser.id}`);
+});
 
 /* === Routes === */
 app.use('/', controllers.auth);
 app.use('/albums', controllers.album);
 app.use('/comments', controllers.comment);
 app.use('/users', controllers.user);
+
+
+// 404
+app.get("/*", (req, res) => {
+  const context = {
+    error: req.error,
+    session: req.session.currentUser,
+  };
+
+  res.render("error/404", context);
+});
 
 app.listen(PORT, () => console.log(`Listening for some tunes on port:`, PORT));

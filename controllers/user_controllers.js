@@ -6,9 +6,7 @@ const getAlbums = require('../credentials/get_albums');
 router.get('/:id', async (req, res, next) => {
   try {
 
-    const foundUser = await User.findOne({ 
-      _id: req.params.id 
-    });
+    const foundUser = await User.findById(req.params.id);
 
     const currentSession = req.session.currentUser;
     
@@ -42,9 +40,8 @@ router.get('/:id', async (req, res, next) => {
 router.put('/:id', async (req, res, next) => {
   try {
 
-    const foundUser = await User.findOne({
-      _id: req.params.id
-    });
+    const foundUser = await User.findById(req.params.id);
+
     const isInCollection = foundUser.recordCollection.includes(req.body.recordCollection);
 
     if (isInCollection) {
@@ -73,5 +70,22 @@ router.put('/:id', async (req, res, next) => {
   }
 });
 
+router.put('/:id/avatar', async (req, res, next) => {
+  try {
+
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: req.session.currentUser.id },
+      { avatar: req.body.avatar }
+    );
+      
+    console.log(updatedUser);
+    return res.redirect(`/users/${req.params.id}`);
+
+  } catch (error) {
+    console.log(error);
+    req.error = error;
+    return next();
+  }
+});
 
 module.exports = router;

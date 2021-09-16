@@ -41,16 +41,29 @@
             />
           </div>
           <div class="register-input">
-            <label for="password-confirm">confirm:</label>
+            <label for="password_confirm">confirm:</label>
             <input
               type="password"
-              name="password-confirm"
-              id="password-confirm"
+              name="password_confirm"
+              id="password_confirm"
               placeholder="confirm password"
               required
             />
           </div>
         </div>
+        <% if (username) { %>
+          <div class="register-error">
+            <p>That username is taken. Please try another.</p>
+          </div>
+          <% } else if (email) { %>
+            <div class="register-error">
+              <p>That email is already in use. Please try another.</p>
+            </div>
+        <% } else if (password) { %> 
+          <div class="register-error">
+            <p>Please re-enter, passwords did not match.</p>
+          </div>
+        <% } %> 
         <div class="register-button-container">
           <button class="button">Submit</button>
         </div>
@@ -59,6 +72,6 @@
     </div>
   </main>
 
-  <%- include('../partials/footer/_footer') %>
+  <!-- %- include('../partials/footer/_footer') %> -->
 </body>
 </html>

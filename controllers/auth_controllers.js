@@ -7,6 +7,9 @@ router.get('/register', (req, res) => {
 
   if (!req.session.currentUser) {
     const context = {
+      username: false,
+      email: false,
+      password: false,
       session: null,
     }
 
@@ -14,6 +17,9 @@ router.get('/register', (req, res) => {
   }
 
   const context = {
+    username: false,
+    email: false,
+    password: false,
     session: req.session.currentUser,
   }
 
@@ -24,6 +30,7 @@ router.get('/login', (req, res) => {
 
   if (!req.session.currentUser) {
     const context = {
+      mismatch: false,
       session: null,
     }
 
@@ -31,27 +38,56 @@ router.get('/login', (req, res) => {
   }
 
   const context = {
+    mismatch: false,
     session: req.session.currentUser,
   }
 
   return res.render('auth/login', context);
 });
 
+
+
 router.post('/register', async (req, res) => {
   try {
 
-    // add check for password and password-confirm to match
-
-    // also, cover up the password in the input field while text
-
     const foundUser = await User.exists({
-      $or: [
-        { email: req.body.email },
-        { username: req.body.username }
-      ],
+      username: req.body.username
     });
+
     if (foundUser) {
-      return res.redirect('/login');
+      const context = {
+        username: true,
+        email: false,
+        password: false,
+        session: null,
+      }
+      return res.render('auth/register', context);
+    }
+
+    const foundEmail = await User.exists({
+      email: req.body.email
+    });
+
+    if (foundEmail) {
+      const context = {
+        username: false,
+        email: true,
+        password: false,
+        session: null,
+      }
+
+      return res.render('auth/register', context);
+    }
+
+    if (req.body.password_confirm !== req.body.password) {
+      const context = {
+        username: false,
+        email: false,
+        password: true,
+        session: null,
+      }
+
+      return res.render('auth/register', context);
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -70,24 +106,38 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
 
-    const foundUser = await User.findOne({
+    const foundUser = await User.find({
       email: req.body.email
     });
-    if (!foundUser) {
-      return res.redirect('/register');
+
+    if (foundUser.length < 1) {
+      const context = {
+        mismatch: true,
+        session: null
+      }
+
+      return res.render('auth/login', context);
     }
 
-    const match = await bcrypt.compare(req.body.password, foundUser.password);
+    const match = await bcrypt.compare(req.body.password, foundUser[0].password);
+
     if (!match) {
-      return console.log('no match');
+      const context = {
+        mismatch: true,
+        session: null
+      }
+
+      return res.render('auth/login', context);
     }
 
     req.session.currentUser = {
-      id: foundUser._id,
-      username: foundUser.username,
-      email: foundUser.email,
-      avatar: foundUser.avatar,
+      id: foundUser[0]._id,
+      username: foundUser[0].username,
+      email: foundUser[0].email,
+      avatar: foundUser[0].avatar,
     };
+
+    
   
     return res.redirect(`/albums`);
 

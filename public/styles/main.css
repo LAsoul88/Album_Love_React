@@ -82,7 +82,7 @@ img {
   grid-template-columns: repeat(14, 1fr);
   grid-template-rows: 1;
   grid-template-areas: 
-    '. box1 box1 . . . . . . . box8 box9 box10 .';
+    '. box1 box1 . headphones . notes . drum . box8 box9 box10 .';
     gap: 20px;
 }
 
@@ -115,6 +115,7 @@ img {
 
 .album-love {
   grid-area: box1;
+  justify-self: left;
 }
 
 .album-love a {
@@ -122,7 +123,7 @@ img {
   font-family: 'Karantina', cursive;
 }
 
-.avatar {
+.avatar-image {
   grid-area: box8;
   width: 5rem;
   height: auto; 
@@ -147,11 +148,31 @@ img {
   grid-area: box10;
 }
 
+.nav-container i {
+  color: var(--morning-blue);
+  align-self: center;
+  justify-self: center;
+  font-size: 2rem;
+}
+
+.notes {
+  grid-area: notes;
+}
+
+.headphones {
+  grid-area: headphones;
+}
+
+.drum {
+  grid-area: drum;
+}
+
+
 /* === Register === */
 
 .register-container {
   width: 20rem;
-  height: 20rem;
+  max-height: 25rem;
   margin: 3rem;
   background: #d3d3d3;
   display: flex;
@@ -164,9 +185,14 @@ img {
 }
 
 .register-container a {
-  font-size: 15px;
+  font-size: 1.5rem;
   text-decoration: none;
   margin: 1rem;
+  color: var(--cosmic-cobalt);
+}
+
+.register-container a:hover {
+  text-decoration: underline;
 }
 
 .register-form {
@@ -184,7 +210,7 @@ img {
 }
 
 .register-form .button {
-  background: var(--blue-sapphire);
+  background: #d3d3d3;
   border: 1px solid black;
 }
 
@@ -196,6 +222,10 @@ img {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.register-error {
+  color: var(--cg-red);
 }
 
 /* === Login === */
@@ -215,9 +245,13 @@ img {
 }
 
 .login-container a {
-  font-size: 15px;
+  font-size: 1.5rem;
   text-decoration: none;
   margin: 1rem;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
 }
 
 .login-form {
@@ -234,12 +268,12 @@ img {
   margin: 1rem;
 }
 
-.login-form .button {
-  background: var(--blue-sapphire);
+.login-button-container .button {
+  background: #d3d3d3;
   border: 1px solid black;
 }
 
-.login-form .button:hover {
+.login-button-container .button:hover {
   background: var(--prussian-blue);
 }
 
@@ -247,6 +281,10 @@ img {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.login-error {
+  color: var(--cg-red);
 }
 
 /* === Homepage === */
@@ -433,14 +471,13 @@ img {
   grid-row: 2 / 4;
   display: flex;
   align-items: center;
-  overflow: hidden;
-  /* color: linear-gradient(0deg, black 0 50%, var(--metallic-seaweed) 50% 100%); */
 }
 
 .comment-content {
   align-self: center;
   width: 100%;
   height: 100%;
+  overflow: auto;
 }
 
 .comment-section-3 {
@@ -518,6 +555,8 @@ img {
   text-align: center;
   align-self: center;
   font-size: 4rem;
+  color: var(--cosmic-cobalt);
+  text-shadow: 0 0 5px rgba(0,0,0,.05), 10px 10px 5px rgba(0,0,0,.1);
 }
 
 .artist-name {
@@ -527,6 +566,10 @@ img {
   font-size: 3rem;
 }
 
+.artist-name span {
+  color: var(--burnt-sienna);
+}
+
 .release-date {
   grid-area: release-date;
   text-align: center;
@@ -534,15 +577,24 @@ img {
   font-size: 3rem;
 }
 
+.release-date span {
+  color: var(--morning-blue);
+}
+
 .track-list-container {
   grid-area: track-list;
   width: 100%;
+  max-height: 10rem;
   display: grid;
-  font-size: 3rem;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(13, 1fr);
+  gap: 10px;
 }
 
 .track-name {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  color: var(--tan-crayola);
 }
 
 .top img {
@@ -554,7 +606,7 @@ img {
 
 .comment-form-container {
   grid-area: comment-form;
-  align-self: start;
+  align-self: end;
   justify-self: center;
   max-height: 20rem;
   display: grid;
@@ -634,6 +686,7 @@ img {
   box-shadow: 0 0 5px rgba(0,0,0,.05), 10px 10px 5px rgba(0,0,0,.1);
   margin: 10px;
   padding-bottom: 10px;
+  padding-right: 10px;
 }
 
 .avatar-container {
@@ -654,6 +707,7 @@ img {
   grid-area: username;
   display: flex;
   justify-content: center;
+  max-width: 100%;
 }
 
 .comment-post-username a {
@@ -662,7 +716,7 @@ img {
 }
 
 .show-comment-username {
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-align: center;
 }
 
@@ -694,12 +748,12 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .show-comment-content {
-  font-size: 1.5rem;
-  color: var(--tan);
+  font-size: 1.75rem;
+  color: black;
 }
 
 .modal {
@@ -721,7 +775,20 @@ img {
   margin: auto;
   padding: 20px;
   border: 2px solid #888;
-  width: 80%;
+  width: 25%;
+}
+
+.modal-content p {
+  font-size: 2rem;
+  color: var(--tan-crayola);
+}
+
+.delete-modal .modal-content {
+  width: 20%;
+}
+
+.delete-modal .button:hover {
+  background: var(--cg-red);
 }
 
 .close {
@@ -738,7 +805,7 @@ img {
   cursor: pointer;
 }
 
-.edit, .delete {
+.edit, .delete, .avatar {
   cursor: pointer;
   color: black;
   transition: color 0.4s;
@@ -752,6 +819,22 @@ img {
   color: var(--cg-red);
 }
 
+.avatar {
+  background: var(--tan);
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  transition: background 0.3s, color 0.3s, border 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.avatar:hover {
+  background: var(--prussian-blue);
+  color: #d3d3d3;
+  border: 1px solid #d3d3d3;
+  transform: scale(1.1);
+  box-shadow: 0 0 5px rgba(0,0,0,.05), 10px 10px 5px rgba(0,0,0,.1);
+}
 
 /* === User Show Page === */
 
@@ -762,15 +845,60 @@ img {
 }
 
 .top-profile {
-  height: 50px;
+  height: 4rem;
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
 }
 
-.top-profile h1 {
-  margin-left: 20px;
+.edit-avatar {
+  grid-column: 2 / 3;
+  justify-self: right;
+  text-align: right;
+  font-size: 3rem;
+  margin-right: 2rem;
+}
+
+.record-collection-heading {
+  grid-column: 1 / 2;
+  text-align: left;
+  justify-self: left;
+  margin-left: 2rem;
+  color: var(--tan);
+}
+
+.record-collection-heading span {
+  color: var(--burnt-sienna);
 }
 
 .bottom-profile {
   display: grid;
+}
+
+.collection-invite {
+  font-size: 2rem;
+  text-align: center;
+  align-self: end;
+}
+
+.collection-invite p {
+  transition: transform 0.3s;
+}
+
+.collection-invite p:hover {
+  transform: scale(1.1);
+}
+
+.collection-invite a {
+  text-decoration: none;
+  color: var(--cosmic-cobalt);
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.collection-invite a:hover {
+  color: var(--burnt-sienna);  
+  text-shadow: 0 0 5px rgba(0,0,0,.05), 10px 10px 5px rgba(0,0,0,.1);
 }
 
 .bottom-profile img {
@@ -810,5 +938,32 @@ img {
 
 .album-image-container {
   grid-row: 2 / 6;
+}
+
+/* === 404 === */
+
+.error-container {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.error-container img {
+  grid-row: 1 / 2;
+  align-self: center;
+  justify-self: center;
+}
+
+.error-text {
+  grid-row: 2 / 3;
+  align-self: top;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.error-text a {
+  text-decoration: none;
+  color: var(--cosmic-cobalt);
 }
 
