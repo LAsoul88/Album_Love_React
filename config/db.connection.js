@@ -7,7 +7,6 @@ const connectionStr = process.env.MONGODB_URI;
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  family: 4,
 });
 
 mongoose.connection.on('connected', () => {

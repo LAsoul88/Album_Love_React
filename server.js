@@ -75,4 +75,4 @@ app.get("/*", (req, res) => {
   res.render("error/404", context);
 });
 
-app.listen(PORT, () => console.log(`Listening for some tunes on port:`, PORT));
+app.listen(process.env.PORT || 3000, () => console.log(`Listening for some tunes on port:`, PORT));
