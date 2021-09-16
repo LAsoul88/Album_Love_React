@@ -21,7 +21,6 @@ const getAlbums = async (arr) => {
         'Authorization': 'Bearer ' + token
       }
     });
-    console.log(targets.data.albums);
     return targets.data.albums;
   }
 };

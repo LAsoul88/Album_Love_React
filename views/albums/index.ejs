@@ -45,26 +45,42 @@
       <h2>Latest Comments</h2>
       <div class="latest-comments">
         <% if (!comments) { %>
-        <% } else { %>  
-        <% for (let i = 0; i < comments.length; i++) { %>
-          <% const comment = comments[i] %>
-          <div class="comment-container">
-            <div class="comment-section-1">
-              <img src="<%= comment.userId.avatar %>" alt="user avatar" />
-              <span><a href="/users/<%= comment.userId.id %>"><%= comment.userId.username %></a></span>
+        <% } else if (comments.length < 10) { %>  
+          <% for (let i = 0; i < comments.length; i++) { %>
+            <% const comment = comments[i] %>
+            <div class="comment-container">
+              <div class="comment-section-1">
+                <img src="<%= comment.userId.avatar %>" alt="user avatar" />
+                <span><a href="/users/<%= comment.userId.id %>"><%= comment.userId.username %></a></span>
+              </div>
+              <div class="comment-section-2">
+                <p class="comment-content"><%= comment.content %></p> 
+              </div>
+              <div class="comment-section-3">
+                <a href="/albums/<%= commentAlbums[i].id %>"><img src="<%= commentAlbums[i].images[0].url %>" alt="<%= commentAlbums[i].name %>"/></a>
+              </div>
             </div>
-            <div class="comment-section-2">
-              <p class="comment-content"><%= comment.content %></p> 
+          <% } %> 
+        <% } else { %>
+          <% for (let i = 0; i < 10; i++) { %>
+            <% const comment = comments[i] %>
+            <div class="comment-container">
+              <div class="comment-section-1">
+                <img src="<%= comment.userId.avatar %>" alt="user avatar" />
+                <span><a href="/users/<%= comment.userId.id %>"><%= comment.userId.username %></a></span>
+              </div>
+              <div class="comment-section-2">
+                <p class="comment-content"><%= comment.content %></p> 
+              </div>
+              <div class="comment-section-3">
+                <a href="/albums/<%= commentAlbums[i].id %>"><img src="<%= commentAlbums[i].images[0].url %>" alt="<%= commentAlbums[i].name %>"/></a>
+              </div>
             </div>
-            <div class="comment-section-3">
-              <a href="/albums/<%= commentAlbums[i].id %>"><img src="<%= commentAlbums[i].images[0].url %>" alt="<%= commentAlbums[i].name %>"/></a>
-            </div>
-          </div>
-        <% } %> 
-        <% } %> 
+          <% } %> 
+        <% } %>  
       </div>
     </div>
   </div>
-  <%- include('../partials/footer/_footer') %>
+  <!-- %- include('../partials/footer/_footer') %> -->
 </body>
 </html>

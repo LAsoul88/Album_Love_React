@@ -82,7 +82,7 @@ img {
   grid-template-columns: repeat(14, 1fr);
   grid-template-rows: 1;
   grid-template-areas: 
-    '. box1 box1 . . . . . . . box8 box9 box10 .';
+    '. box1 box1 . headphones . notes . drum . box8 box9 box10 .';
     gap: 20px;
 }
 
@@ -115,6 +115,7 @@ img {
 
 .album-love {
   grid-area: box1;
+  justify-self: left;
 }
 
 .album-love a {
@@ -146,6 +147,26 @@ img {
 .logout {
   grid-area: box10;
 }
+
+.nav-container i {
+  color: var(--morning-blue);
+  align-self: center;
+  justify-self: center;
+  font-size: 2rem;
+}
+
+.notes {
+  grid-area: notes;
+}
+
+.headphones {
+  grid-area: headphones;
+}
+
+.drum {
+  grid-area: drum;
+}
+
 
 /* === Register === */
 
@@ -732,7 +753,7 @@ img {
 
 .show-comment-content {
   font-size: 1.75rem;
-  color: var(--tan);
+  color: black;
 }
 
 .modal {
@@ -811,12 +832,41 @@ img {
   height: 50px;
 }
 
-.top-profile h1 {
+.record-collection-heading {
   margin-left: 20px;
+  color: var(--tan);
+}
+
+.record-collection-heading span {
+  color: var(--burnt-sienna);
 }
 
 .bottom-profile {
   display: grid;
+}
+
+.collection-invite {
+  font-size: 2rem;
+  text-align: center;
+  align-self: end;
+}
+
+.collection-invite p {
+  transition: transform 0.3s;
+}
+
+.collection-invite p:hover {
+  transform: scale(1.1);
+}
+
+.collection-invite a {
+  text-decoration: none;
+  color: var(--cosmic-cobalt);
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.collection-invite a:hover {
+  color: var(--burnt-sienna);  text-shadow: 0 0 5px rgba(0,0,0,.05), 10px 10px 5px rgba(0,0,0,.1);
 }
 
 .bottom-profile img {
