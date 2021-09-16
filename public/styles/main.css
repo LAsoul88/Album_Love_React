@@ -856,14 +856,27 @@ img {
   width: 25%;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
 .modal-content p {
   font-size: 2rem;
   color: var(--tan-crayola);
+  text-align: center;
 }
 
-.delete-modal .modal-content {
+.modal-content .button {
+  justify-self: center;
+}
+
+.delete-modal .modal-content, .avatar-modal .modal-content {
   width: 20%;
 }
+
+
 
 .delete-modal .button:hover {
   background: var(--cg-red);

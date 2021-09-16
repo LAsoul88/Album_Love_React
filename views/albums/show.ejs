@@ -104,14 +104,18 @@
             />
             <textarea rows="4" cols="50" name="content"
             id="content"><%= comment.content %></textarea>
-            <button class="button">Submit</button>
+            <div class="center">  
+              <button class="button">Submit</button>
+            </div>
           </form>
         </div>
         <div class="modal delete-modal" id="d<%= comment._id %>">
           <form class="modal-content" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
             <span class="close delete-close">&times;</span>
             <p>Are you sure you want to delete your comment?</p>
-            <button class="button">Submit</button>
+            <div class="center">  
+              <button class="button">Submit</button>
+            </div>
           </form>
           <!-- <button>Cancel</button> -->
         </div>
