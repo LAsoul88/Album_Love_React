@@ -6,9 +6,7 @@ const getAlbums = require('../credentials/get_albums');
 router.get('/:id', async (req, res, next) => {
   try {
 
-    const foundUser = await User.findOne({ 
-      _id: req.params.id 
-    });
+    const foundUser = await User.findById(req.params.id);
 
     const currentSession = req.session.currentUser;
     

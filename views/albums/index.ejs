@@ -44,7 +44,9 @@
     <div class="right-home-container">
       <h2>Latest Comments</h2>
       <div class="latest-comments">
-        <% for (let i = 0; i < 10; i++) { %>
+        <% if (!comments) { %>
+        <% } else { %>  
+        <% for (let i = 0; i < comments.length; i++) { %>
           <% const comment = comments[i] %>
           <div class="comment-container">
             <div class="comment-section-1">
@@ -58,6 +60,7 @@
               <a href="/albums/<%= commentAlbums[i].id %>"><img src="<%= commentAlbums[i].images[0].url %>" alt="<%= commentAlbums[i].name %>"/></a>
             </div>
           </div>
+        <% } %> 
         <% } %> 
       </div>
     </div>

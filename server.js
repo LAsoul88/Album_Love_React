@@ -22,14 +22,14 @@ app.set("view engine", "ejs");
 app.use(
   session({
     store: MongoStore.create({
-      mongoUrl: 'mongodb://localhost:27017/albumlove'
+      mongoUrl: process.env.MONGODB_URI
     }),
-    secret: 'so secret',
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24 * 7 * 2
-    }
+      maxAge: 1000 * 60 * 60 * 24 * 7 * 2,
+    },
   })
 );
 
@@ -48,6 +48,7 @@ app.use(express.urlencoded({
 }));
 
 app.use(methodOverride("_method"));
+
 app.use(require('./utils/logger'));
 
 app.get('/', (req, res) => {

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const getAlbum = require('../credentials/get_album');
+const getAlbum = require('../credentials/get_album').default;
 const { Comment } = require('../models');
 
 router.delete('/:id', async (req, res, next) => {

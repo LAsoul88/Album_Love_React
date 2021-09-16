@@ -11,7 +11,6 @@
       <h2 class="artist-name">Artist: <%= album.artists[0].name %></h2>
       <h3 class="release-date">Release: <%= album.release_date %></h3>
       <div class="track-list-container">
-        Track list: 
         
           <% for (let i = 0; i < album.tracks.items.length; i++) { %>  
             <% const track = album.tracks.items[i] %>
@@ -20,23 +19,27 @@
         
       </div>
       <img src="<%= album.images[0].url %>" alt="<%= album.name %> image" />
-      <div class="comment-form-container">
-        <p class="session-username"><%= session.username %></p>
-        <img src="<%= session.avatar %>" alt="avatar" />
-        <p class="comment-invite">What do you think of <span><%= album.name %></span>? Let us know!</p>
-        <form class="comment-form" action="/albums/<%= album.id %>" method="POST">
-          <textarea 
-            rows="4" 
-            cols="50"
-            maxlength="400" 
-            placeholder="Join the discussion!"         
-            name="content"
-            id="content"
-            required
-          ></textarea>
-          <button class="button comment-submit-button">Submit</button>
-        </form>
-      </div>
+
+      <% if (!session) { %> 
+      <% } else { %> 
+        <div class="comment-form-container">
+          <p class="session-username"><%= session.username %></p>
+          <img src="<%= session.avatar %>" alt="avatar" />
+          <p class="comment-invite">What do you think of <span><%= album.name %></span>? Let us know!</p>
+          <form class="comment-form" action="/albums/<%= album.id %>" method="POST">
+            <textarea 
+              rows="4" 
+              cols="50"
+              maxlength="400" 
+              placeholder="Join the discussion!"         
+              name="content"
+              id="content"
+              required
+            ></textarea>
+            <button class="button comment-submit-button">Submit</button>
+          </form>
+        </div>
+      <% } %> 
       
       <% if (!user) { %>
       <% } else { %> 
@@ -69,7 +72,8 @@
           <div class="timestamp-container">
             <p class="timestamp"><%= comment.createdAt.toLocaleDateString() %> - <%= comment.createdAt.toLocaleTimeString() %></p>
           </div>
-          <% if (session.id === comment.userId.id) { %> 
+          <% if (!session) { %> 
+          <% } else if (session.id === comment.userId.id) { %> 
             <div class="edit-delete-container">
               <i class="fas fa-edit edit" data-update-id="<%= comment._id %>"></i>
               <i class="fas fa-trash-alt delete" data-delete-id="<%= comment._id %>"></i>

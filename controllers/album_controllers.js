@@ -39,7 +39,7 @@ router.get('/', async (req, res, next) => {
       session: currentSession,
       user: currentSession,
     };
-    
+
     return res.render('albums/index', context);
 
   } catch (error) {
@@ -64,9 +64,7 @@ router.get('/:id', async (req, res, next) => {
     let isInCollection = false;
 
     if (currentSession) {
-      foundUser = await User.findOne({
-      _id: currentSession.id
-      });
+      foundUser = await User.findById(currentSession.id);
 
       isInCollection = foundUser.recordCollection.includes(req.params.id);
     }

@@ -106,11 +106,11 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
 
-    const foundUser = await User.findOne({
+    const foundUser = await User.find({
       email: req.body.email
     });
 
-    if (!foundUser) {
+    if (foundUser.length < 1) {
       const context = {
         mismatch: true,
         session: null
@@ -119,7 +119,7 @@ router.post('/login', async (req, res) => {
       return res.render('auth/login', context);
     }
 
-    const match = await bcrypt.compare(req.body.password, foundUser.password);
+    const match = await bcrypt.compare(req.body.password, foundUser[0].password);
 
     if (!match) {
       const context = {
@@ -131,11 +131,13 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.currentUser = {
-      id: foundUser._id,
-      username: foundUser.username,
-      email: foundUser.email,
-      avatar: foundUser.avatar,
+      id: foundUser[0]._id,
+      username: foundUser[0].username,
+      email: foundUser[0].email,
+      avatar: foundUser[0].avatar,
     };
+
+    
   
     return res.redirect(`/albums`);
 
