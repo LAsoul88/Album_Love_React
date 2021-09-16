@@ -9,6 +9,7 @@ router.get('/:id', async (req, res, next) => {
     const foundUser = await User.findById(req.params.id);
     const currentSession = req.session.currentUser;
     
+    console.log('found user: ', foundUser);
     console.log('current session: ', currentSession);
     
     if (!foundUser.recordCollection[0]) {

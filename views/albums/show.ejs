@@ -21,6 +21,16 @@
       <img src="<%= album.images[0].url %>" alt="<%= album.name %> image" />
 
       <% if (!session) { %> 
+        <div class="comment-form-container">
+          <div class="registration-pic-container">
+            <i class="fas fa-comments bubble"></i>
+            <i class="fas fa-user-friends people"></i>
+          </div>
+          <p class="registration-redirect"><a href="/register">Registration</a></p>
+          <p class="registration-invite">Want to talk about <span><%= album.name %></span>? Click the registration link below and sign up!</p>
+          <div class="">
+          </div>
+        </div>
       <% } else { %> 
         <div class="comment-form-container">
           <p class="session-username"><%= session.username %></p>
@@ -67,7 +77,7 @@
             <img src="<%= comment.userId.avatar %>" alt="user avatar" />
           </div>
           <div class="comment-post-username">
-            <a href="/users/<%= comment.userId.id %>"><p class="show-comment-username"><%= comment.userId.username %></p></a>
+            <p class="show-comment-username"><a href="/users/<%= comment.userId.id %>"><%= comment.userId.username %></a></p>
           </div>
           <div class="timestamp-container">
             <p class="timestamp"><%= comment.createdAt.toLocaleDateString() %> - <%= comment.createdAt.toLocaleTimeString() %></p>
@@ -99,8 +109,8 @@
         </div>
         <div class="modal delete-modal" id="d<%= comment._id %>">
           <form class="modal-content" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-            <p>Are you sure you want to delete your comment?</p>
             <span class="close delete-close">&times;</span>
+            <p>Are you sure you want to delete your comment?</p>
             <button class="button">Submit</button>
           </form>
           <!-- <button>Cancel</button> -->
