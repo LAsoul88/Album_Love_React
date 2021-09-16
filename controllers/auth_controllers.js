@@ -136,8 +136,6 @@ router.post('/login', async (req, res) => {
       email: foundUser[0].email,
       avatar: foundUser[0].avatar,
     };
-
-    
   
     return res.redirect(`/albums`);
 

@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head/_head', { page: album.name }) %>
-
 <body>
   <%- include('../partials/navbar/_navbar') %>
-
   <div class="show-page">
     <div class="top">
       <h2 class="album-name"><%= album.name %></h2>
       <h2 class="artist-name">Artist: <span><%= album.artists[0].name %></span></h2>
       <h3 class="release-date">Release: <span><%= album.release_date %></span></h3>
-      <div class="track-list-container">
-        
+      <div class="track-list-container">        
           <% for (let i = 0; i < album.tracks.items.length; i++) { %>  
             <% const track = album.tracks.items[i] %>
             <div class="track-name"><%= i + 1 %>. <%= track.name %></div> 
           <% } %> 
-        
       </div>
       <img src="<%= album.images[0].url %>" alt="<%= album.name %> image" />
-
       <% if (!session) { %> 
+        <div class="comment-form-container">
+          <div class="registration-pic-container">
+            <i class="fas fa-comments bubble"></i>
+            <i class="fas fa-user-friends people"></i>
+          </div>
+          <p class="registration-redirect"><a href="/register">Registration</a></p>
+          <p class="registration-invite">Want to talk about <span><%= album.name %></span>? Click the registration link below and sign up!</p>
+          <div class="">
+          </div>
+        </div>
       <% } else { %> 
         <div class="comment-form-container">
           <p class="session-username"><%= session.username %></p>
@@ -39,8 +44,7 @@
             <button class="button comment-submit-button">Submit</button>
           </form>
         </div>
-      <% } %> 
-      
+      <% } %>      
       <% if (!user) { %>
       <% } else { %> 
         <form class="record-collection-button" action="/users/<%= user.id %>?_method=PUT" method="POST">
@@ -58,7 +62,6 @@
         </form>
       <% } %>  
     </div>
-
     <div class="bottom">
       <% for (let i = comments.length - 1; i >= 0; i--) { %>
         <% const comment = comments[i] %> 
@@ -67,7 +70,7 @@
             <img src="<%= comment.userId.avatar %>" alt="user avatar" />
           </div>
           <div class="comment-post-username">
-            <a href="/users/<%= comment.userId.id %>"><p class="show-comment-username"><%= comment.userId.username %></p></a>
+            <p class="show-comment-username"><a href="/users/<%= comment.userId.id %>"><%= comment.userId.username %></a></p>
           </div>
           <div class="timestamp-container">
             <p class="timestamp"><%= comment.createdAt.toLocaleDateString() %> - <%= comment.createdAt.toLocaleTimeString() %></p>
@@ -94,21 +97,23 @@
             />
             <textarea rows="4" cols="50" name="content"
             id="content"><%= comment.content %></textarea>
-            <button class="button">Submit</button>
+            <div class="center">  
+              <button class="button">Submit</button>
+            </div>
           </form>
         </div>
         <div class="modal delete-modal" id="d<%= comment._id %>">
           <form class="modal-content" action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-            <p>Are you sure you want to delete your comment?</p>
             <span class="close delete-close">&times;</span>
-            <button class="button">Submit</button>
+            <p>Are you sure you want to delete your comment?</p>
+            <div class="center">  
+              <button class="button">Submit</button>
+            </div>
           </form>
-          <!-- <button>Cancel</button> -->
         </div>
       <% } %>  
     </div>
   </div>
-
   <!-- %- include('../partials/footer/_footer') %> -->
 </body>
 </html>

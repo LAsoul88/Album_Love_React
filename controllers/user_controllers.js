@@ -10,7 +10,6 @@ router.get('/:id', async (req, res, next) => {
 
     const currentSession = req.session.currentUser;
     
-    
     if (!foundUser.recordCollection[0]) {
       const context = {
         albums: null,
@@ -30,6 +29,7 @@ router.get('/:id', async (req, res, next) => {
     };
 
     return res.render('users/show', context);
+    
   } catch (error) {
     console.log(error);
     req.error = error;
@@ -78,7 +78,6 @@ router.put('/:id/avatar', async (req, res, next) => {
       { avatar: req.body.avatar }
     );
       
-    console.log(updatedUser);
     return res.redirect(`/users/${req.params.id}`);
 
   } catch (error) {
