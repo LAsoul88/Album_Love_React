@@ -62,3 +62,5 @@ Certain animations on links/buttons don't quite work the way I anticipated. This
 ## Planning Materials
 
 For a look at the planning materials and logic behind the development of this application, see the PLANNING.md document in this repo. There you will find user stories, wireframes, entity relationship diagrams, and more from the initial stages of development. 
+
+<a href="https://github.com/LAsoul88/Album_Love/blob/court/PLANNING.md">Planning</a>
