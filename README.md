@@ -22,15 +22,15 @@ Otherwise, forking and cloning the Album Love repo will provide you with almost 
 
 ### Dependencies
 
-axios: 0.21.4 - for formatting API querys correctly
-bcryptjs: 2.4.3 - for hashing, salting, and comparing passwords
-connect-mongo: 4.5.0 - for creating a MongoDB instance 
-dotenv: 10.0.0 - for storing secret strings securely
-ejs: 3.1.6 - for dynamically rendering template views
-express: 4.17.1 - for building out the back-end (server)
-express-session: 1.17.2 - for creating and tracking sessions
-method-override: 3.0.0 - used to include PUT and DELETE routes
-mongoose: 6.0.5 - an object data modeling library for MongoDB and Node
+axios: 0.21.4 - for formatting API querys correctly <br>
+bcryptjs: 2.4.3 - for hashing, salting, and comparing passwords <br>
+connect-mongo: 4.5.0 - for creating a MongoDB instance <br>
+dotenv: 10.0.0 - for storing secret strings securely <br>
+ejs: 3.1.6 - for dynamically rendering template views <br>
+express: 4.17.1 - for building out the back-end (server) <br>
+express-session: 1.17.2 - for creating and tracking sessions <br>
+method-override: 3.0.0 - used to include PUT and DELETE routes <br>
+mongoose: 6.0.5 - an object data modeling library for MongoDB and Node <br>
 querystring: 0.2.1 - used with AXIOS to properly format strings for API querys (this dependency was deprecated during development of this application, URLSearchParams API is recommended in its place)
 
 ## Looking to the Future
@@ -62,3 +62,5 @@ Certain animations on links/buttons don't quite work the way I anticipated. This
 ## Planning Materials
 
 For a look at the planning materials and logic behind the development of this application, see the PLANNING.md document in this repo. There you will find user stories, wireframes, entity relationship diagrams, and more from the initial stages of development. 
+
+<a href="https://github.com/LAsoul88/Album_Love/blob/court/PLANNING.md">Planning</a>
