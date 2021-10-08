@@ -3,12 +3,11 @@ import React from 'react';
 const SearchBar = () => {
   return (
     <div>
-      <form action="albums" method="GET">
+      <form action="/albums/home" method="GET">
         <input
           type="text"
           name="search"
           id="search-query"
-          className="search-query"
           placeholder="search for an album"
           required
         />
@@ -16,7 +15,6 @@ const SearchBar = () => {
           type="submit"
           value="Submit"
           id="search-submit"
-          className="search-query button"
         />
       </form>
     </div>
