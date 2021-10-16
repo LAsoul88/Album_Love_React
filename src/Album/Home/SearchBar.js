@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import AlbumCard from './AlbumCard';
 
 const SearchBar = props => {
   const [query, setQuery] = useState("john coltrane");

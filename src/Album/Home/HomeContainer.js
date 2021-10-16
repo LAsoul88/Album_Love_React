@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import SearchBar from './SearchBar';
+import AlbumCard from './AlbumCard';
 
 
 const HomeContainer = () => {
@@ -24,7 +25,7 @@ const HomeContainer = () => {
     .then(tokenResponse => {
       setToken(tokenResponse.data.access_token);
 
-      axios(`https://api.spotify.com/v1/search?q=${query}&type=album&market=US&limit=50`, {
+      axios(`https://api.spotify.com/v1/search?q=col&type=album&market=US&limit=50`, {
         method: 'GET',
         headers: { 'Authorization' : 'Bearer ' + tokenResponse.data.access_token }
       })
@@ -38,6 +39,12 @@ const HomeContainer = () => {
   return (
     <>
       <SearchBar />
+      { albums ? (
+        albums.map(album => {
+          return <AlbumCard album={album} key={album.id} />
+        })) : (
+          <img src="https://media.giphy.com/media/l3vQY93bN54rXJTrO/giphy.gif" alt="searching through records" />
+      )}
     </>
   )
 }
