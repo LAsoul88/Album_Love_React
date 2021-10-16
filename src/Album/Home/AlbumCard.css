@@ -1,0 +1,19 @@
+.album__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.album__container > h3 {
+  font-size: 2rem;
+}
+
+.album__container > div {
+  width: 30vw;
+}
+
+.album__container > div > img {
+  width: 100%;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
+}

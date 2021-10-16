@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const SearchBar = () => {
+const SearchBar = props => {
+  const [query, setQuery] = useState("john coltrane");
+
+  console.log('Rendering Search Bar', query);
+
+  const handleSubmit = event => {
+    event.preventDefault();
+  }
+
   return (
     <div>
-      <form action="albums" method="GET">
-        <input
-          type="text"
-          name="search"
-          id="search-query"
-          className="search-query"
-          placeholder="search for an album"
-          required
+      Album Search
+      <form onSubmit={handleSubmit}>
+        <input 
+          type="text" 
+          placeholder="Search for albums!"
         />
-        <input
-          type="submit"
-          value="Submit"
-          id="search-submit"
-          className="search-query button"
-        />
+        <button>Submit</button>
       </form>
     </div>
   )
