@@ -10,38 +10,24 @@ const HomeContainer = () => {
   const [query, setQuery] = useState('');
   const [albums, setAlbums] = useState([]);
 
-  const updateQuery = search => {
-    setQuery(search);
-  }
-
+  
   useEffect(() => {
-
-    if (query === '') { 
-      setAlbums([]);
-
-    } else {
-    
-      axios('https://accounts.spotify.com/api/token', {
-        headers: {
-          'Content-Type' : 'application/x-www-form-urlencoded',
-          'Authorization' : 'Basic ' + btoa('2f212092437640b08c1577de2c87a6b3:e587869e784943bd91f1ba87094b4067')
-        },
-        data: 'grant_type=client_credentials',
-        method: 'POST'
-      })
-      .then(tokenResponse => {
-
-        axios(`https://api.spotify.com/v1/search?q=${query}&type=album&market=US&limit=50`, {
-          method: 'GET',
-          headers: { 'Authorization' : 'Bearer ' + tokenResponse.data.access_token }
-        })
-        .then(albumResponse => {
-          setAlbums(albumResponse.data.albums.items);
-        })
-      })
-    }
+    axios.post('http://localhost:4000', {
+      method: 'POST',
+      query: query,
+      headers: {
+        'Content-Type' : 'application/x-www-form-urlencoded'
+      }
+    })
+    .then(response => {
+      setAlbums(response.data);
+    })
   }, [query]);
   
+  const updateQuery = query => {
+    setQuery(query);
+  }
+
   return (
     <>
       <SearchBar updateQuery={updateQuery} />

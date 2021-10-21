@@ -2,7 +2,6 @@ import React from 'react';
 import './AlbumCard.css';
 
 const AlbumCard = ({ album }) => {
-
   return (
     <div className="album__container">
       <h3>{album.name}</h3>
