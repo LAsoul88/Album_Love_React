@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 
-const SearchBar = props => {
-  const [query, setQuery] = useState("john coltrane");
+const SearchBar = ({ updateQuery }) => {
 
-  console.log('Rendering Search Bar', query);
+  const [query, setQuery] = useState('');
 
   const handleSubmit = event => {
     event.preventDefault();
+    updateQuery(query);
+  }
+
+  const handleChange = event => {
+    setQuery(event.target.value);
   }
 
   return (
@@ -16,6 +20,7 @@ const SearchBar = props => {
         <input 
           type="text" 
           placeholder="Search for albums!"
+          onChange={handleChange}
         />
         <button>Submit</button>
       </form>

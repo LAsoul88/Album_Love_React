@@ -1,13 +1,12 @@
 import React from 'react';
 import './AlbumCard.css';
 
-const AlbumCard = props => {
-
+const AlbumCard = ({ album }) => {
   return (
     <div className="album__container">
-      <h3>{props.album.name}</h3>
+      <h3>{album.name}</h3>
       <div>
-        <img src={props.album.images[0].url} alt={props.album.name} />
+        <img src={album.images[0].url} alt={album.name} />
       </div>
     </div>
   )
