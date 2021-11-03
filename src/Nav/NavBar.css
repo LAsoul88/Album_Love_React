@@ -1,0 +1,34 @@
+.nav__container {
+  width: 100%;
+  height: 100px;
+  background: #163251;
+  color: #E89C6E;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.title__container {
+  width: 45%;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+.link__container {
+  width: 45%;
+  display: flex;
+  justify-content: right;
+}
+
+ul {
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
+
+ul > li {
+  font-size: 1.5rem;
+}

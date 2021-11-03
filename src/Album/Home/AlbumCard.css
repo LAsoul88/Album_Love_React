@@ -1,4 +1,6 @@
 .album__container {
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,10 +12,17 @@
 }
 
 .album__container > div {
-  width: 30vw;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.album__container > div > img {
+.name__link {
+  text-decoration: none;
+  color: #E89C6E;
+}
+
+.image__link > img {
   width: 100%;
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './SearchBar.css';
 
 const SearchBar = ({ updateQuery }) => {
 
@@ -15,7 +16,6 @@ const SearchBar = ({ updateQuery }) => {
 
   return (
     <div>
-      Album Search
       <form onSubmit={handleSubmit}>
         <input 
           type="text" 

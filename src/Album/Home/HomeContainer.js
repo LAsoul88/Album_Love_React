@@ -4,6 +4,7 @@ import axios from 'axios';
 import SearchBar from './SearchBar';
 import AlbumCard from './AlbumCard';
 
+import './HomeContainer.css';
 
 const HomeContainer = () => {
 
@@ -12,7 +13,7 @@ const HomeContainer = () => {
 
   
   useEffect(() => {
-    axios.post('http://localhost:4000', {
+    axios.post('http://localhost:4000/albums', {
       method: 'POST',
       query: query,
       headers: {
@@ -29,15 +30,18 @@ const HomeContainer = () => {
   }
 
   return (
-    <>
-      <SearchBar updateQuery={updateQuery} />
-      { albums ? (
-        albums.map(album => {
-          return <AlbumCard album={album} key={album.id} />
-        })) : (
-          <img src="https://media.giphy.com/media/l3vQY93bN54rXJTrO/giphy.gif" alt="searching through records" />
-      )}
-    </>
+    <div className="albums__container">
+      <h2>Use the search bar below to start looking for your favorite albums!</h2>
+      <SearchBar updateQuery={updateQuery}  />
+      <div>
+        { albums ? (
+          albums.map(album => {
+            return <AlbumCard album={album} key={album.id} />
+          })) : (
+            <img src="https://media.giphy.com/media/l3vQY93bN54rXJTrO/giphy.gif" alt="searching through records" />
+        )}
+      </div>
+    </div>
   )
 }
 
