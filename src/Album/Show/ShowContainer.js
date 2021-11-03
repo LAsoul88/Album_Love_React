@@ -5,6 +5,7 @@ import axios from 'axios';
 import './ShowContainer.css';
 
 import CoverArt from './CoverArt';
+import TrackList from './TrackList';
 
 const ShowContainer = () => {
   
@@ -22,12 +23,15 @@ const ShowContainer = () => {
     .then(response => {
       setAlbum(response.data);
     })
-  }, [])
+  }, [id])
 
   return (
     <>
       { album ? (
-        <CoverArt album={album} key={id} />
+        <>
+          <CoverArt album={album} key={`art:${id}`} />
+          <TrackList album={album} key={`tracks:${id}`} />
+        </>
       ) : (
         <p>Loading...</p>
       )} 
