@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AlbumImage = ({ album }) => {
+const CoverArt = ({ album }) => {
   const { images, name } = album;
   return (
     <div>
@@ -9,4 +9,4 @@ const AlbumImage = ({ album }) => {
   )
 }
 
-export default AlbumImage;
+export default CoverArt;

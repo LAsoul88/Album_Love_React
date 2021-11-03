@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import './ShowContainer.css';
 
-import AlbumImage from './AlbumImage';
+import CoverArt from './CoverArt';
 
 const ShowContainer = () => {
   
@@ -27,7 +27,7 @@ const ShowContainer = () => {
   return (
     <>
       { album ? (
-        <AlbumImage album={album} key={id} />
+        <CoverArt album={album} key={id} />
       ) : (
         <p>Loading...</p>
       )} 

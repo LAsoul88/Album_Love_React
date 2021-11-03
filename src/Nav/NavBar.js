@@ -5,9 +5,8 @@ import './NavBar.css';
 const NavBar = () => {
   return (
     <div className="nav__container">
-      <Router>
         <div className="title__container">
-          <h1><Link to="/">Album Love</Link></h1>
+          <h1><Link to="/albums">Album Love</Link></h1>
         </div>
         <div className="link__container">
           <ul>
@@ -15,7 +14,6 @@ const NavBar = () => {
             <li>Register</li>
           </ul>
         </div>
-      </Router>
     </div>
   )
 }
