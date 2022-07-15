@@ -13,13 +13,7 @@ const ShowContainer = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.post(`http://localhost:4000/albums/:id`, {
-      method: 'POST',
-      query: id,
-      headers: {
-        'Content-Type' : 'application/x-www-form-urlencoded'
-      }
-    })
+    axios.get(`http://localhost:4000/api/album?id=${id}`)
     .then(response => {
       setAlbum(response.data);
     })

@@ -1,8 +1,8 @@
 .nav__container {
   width: 100%;
   height: 100px;
-  background: #163251;
-  color: #E89C6E;
+  background: #26619c;
+  /* color: #E89C6E; */
   display: flex;
   justify-content: space-around;
   align-items: center;

@@ -1,8 +1,7 @@
 import React from 'react';
 
 const TrackList = ({ album }) => {
-  console.log(album)
-  const tracks = album.tracks.items
+  const tracks = album.tracks.items;
   return (
     <ol>
       { tracks.map(track => {

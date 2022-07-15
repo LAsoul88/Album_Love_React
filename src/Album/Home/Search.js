@@ -4,22 +4,16 @@ import axios from 'axios';
 import SearchBar from './SearchBar';
 import AlbumCard from './AlbumCard';
 
-import './HomeContainer.css';
+import './Search.css';
 
-const HomeContainer = () => {
-
+const Search = () => {
+  
   const [query, setQuery] = useState('');
   const [albums, setAlbums] = useState([]);
 
   
   useEffect(() => {
-    axios.post('http://localhost:4000/albums', {
-      method: 'POST',
-      query: query,
-      headers: {
-        'Content-Type' : 'application/x-www-form-urlencoded'
-      }
-    })
+    axios.get(`http://localhost:4000/api/albums?search=${query}`)
     .then(response => {
       setAlbums(response.data);
     })
@@ -32,9 +26,9 @@ const HomeContainer = () => {
   return (
     <div className="albums__container">
       <h2>Use the search bar below to start looking for your favorite albums!</h2>
-      <SearchBar updateQuery={updateQuery}  />
+      <SearchBar updateQuery={updateQuery} />
       <div>
-        { albums ? (
+        { albums.length > 0 ? (
           albums.map(album => {
             return <AlbumCard album={album} key={album.id} />
           })) : (
@@ -45,4 +39,4 @@ const HomeContainer = () => {
   )
 }
 
-export default HomeContainer;
+export default Search;

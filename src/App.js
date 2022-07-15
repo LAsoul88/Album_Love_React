@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import NavBar from './Nav/NavBar';
-import HomeContainer from './Album/Home/HomeContainer';
+import Search from './Album/Home/Search';
 import ShowContainer from './Album/Show/ShowContainer';
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
       <NavBar />
       <div className="main">
         <Switch>
-          <Route exact path="/albums" component={HomeContainer} />
+          <Route exact path="/albums" component={Search} />
           <Route path="/albums/:id" component={ShowContainer} />
         </Switch>
       </div>
