@@ -1,0 +1,11 @@
+.Comments {
+
+  .Comments_title {
+    font-size: 1.5rem; 
+  }
+  .Comments_list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
