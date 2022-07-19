@@ -1,14 +1,25 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import './AlbumCard.css';
+import './AlbumCard.scss';
 
 const AlbumCard = ({ album }) => {
   const { id, images, name } = album;
   return (
-      <div className="album__container">
-        <h3><Link to={`albums/${id}`} className="name__link">{name}</Link></h3>
-        <div>
-          <Link to={`albums/${id}`} className="image__link"><img src={images[0].url} alt={name} /></Link>
+      <div className="AlbumCard">
+        <Link 
+          to={`albums/${id}`} 
+          className="AlbumCard_nameLink"
+        >{name}</Link>
+        <div className="AlbumCard_imgContainer">
+          <Link 
+            to={`albums/${id}`} 
+            className="AlbumCard_imgLink"
+          >
+            <img 
+              src={images[0].url} 
+              alt={name} 
+              className="AlbumCard_img" 
+            />
+          </Link>
         </div>
       </div>
   )

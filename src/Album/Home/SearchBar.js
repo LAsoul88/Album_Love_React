@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './SearchBar.css';
+import { useState } from 'react';
+import './SearchBar.scss';
 
 const SearchBar = ({ updateQuery }) => {
 
@@ -15,14 +15,20 @@ const SearchBar = ({ updateQuery }) => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="SearchBar">
+      <form 
+        className="SearchBar_form" 
+        onSubmit={handleSubmit}
+      >
         <input 
           type="text" 
           placeholder="Search for albums!"
           onChange={handleChange}
+          className="SearchBar_input"
         />
-        <button>Submit</button>
+        <button className="SearchBar_button">
+          Submit
+        </button>
       </form>
     </div>
   )

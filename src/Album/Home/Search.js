@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import SearchBar from './SearchBar';
 import AlbumCard from './AlbumCard';
 
-import './Search.css';
+import './Search.scss';
 
 const Search = () => {
   
@@ -16,7 +16,7 @@ const Search = () => {
     axios.get(`http://localhost:4000/api/albums?search=${query}`)
     .then(response => {
       setAlbums(response.data);
-    })
+    });
   }, [query]);
   
   const updateQuery = query => {
@@ -24,15 +24,27 @@ const Search = () => {
   }
 
   return (
-    <div className="albums__container">
-      <h2>Use the search bar below to start looking for your favorite albums!</h2>
-      <SearchBar updateQuery={updateQuery} />
-      <div>
+    <div className="Search">
+      <h2 className="Search_helperText">
+        Use the search bar below to 
+        {albums.length > 0 ? 'continue' : 'start'} 
+        looking for your favorite albums!
+      </h2>
+      <div className="Search_searchBar">
+        <SearchBar updateQuery={updateQuery} />
+      </div>
+      <div className="Search_albumList">
         { albums.length > 0 ? (
           albums.map(album => {
-            return <AlbumCard album={album} key={album.id} />
+            return <AlbumCard 
+                     album={album} 
+                     key={album.id} 
+                   />
           })) : (
-            <img src="https://media.giphy.com/media/l3vQY93bN54rXJTrO/giphy.gif" alt="searching through records" />
+            <img 
+              src="https://media.giphy.com/media/l3vQY93bN54rXJTrO/giphy.gif" alt="searching through records" 
+              className="Search_gif"
+            />
         )}
       </div>
     </div>

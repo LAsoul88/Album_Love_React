@@ -1,34 +1,41 @@
-.nav__container {
+.NavBar {
   width: 100%;
   height: 100px;
   background: #26619c;
-  /* color: #E89C6E; */
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.title__container {
+.NavBar_brand {
   width: 45%;
 }
 
-h1 {
+.NavBar_brandLink {
   font-size: 2.5rem;
 }
 
-.link__container {
+.brandLink___noDec {
+  text-decoration: none;
+}
+
+.NavBar_links {
   width: 45%;
   display: flex;
   justify-content: right;
 }
 
-ul {
+.NavBar_linkList {
   width: 50%;
   display: flex;
   justify-content: space-evenly;
   list-style-type: none;
 }
 
-ul > li {
+.NavBar_link {
   font-size: 1.5rem;
+}
+
+.link___noDec {
+  text-decoration: none;
 }

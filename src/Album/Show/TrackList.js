@@ -1,5 +1,3 @@
-import React from 'react';
-
 const TrackList = ({ album }) => {
   const tracks = album.tracks.items;
   return (

@@ -1,4 +1,4 @@
-.album__container {
+.AlbumCard {
   width: 100%;
   height: auto;
   display: flex;
@@ -7,22 +7,19 @@
   align-items: center;
 }
 
-.album__container > h3 {
-  font-size: 2rem;
-}
-
-.album__container > div {
+.AlbumCard > div {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.name__link {
+.AlbumCard_nameLink {
   text-decoration: none;
   color: #E89C6E;
+  font-size: 2rem;
 }
 
-.image__link > img {
+.AlbumCard_imgLink > .AlbumCard_img {
   width: 100%;
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
 }

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import './ShowContainer.css';
+import './ShowContainer.scss';
 
 import CoverArt from './CoverArt';
 import TrackList from './TrackList';
