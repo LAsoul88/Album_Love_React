@@ -8,14 +8,15 @@ import "./Comments.scss";
 const Comments = () => {
 
   const [comments, setComments] = useState([]);
-
+ 
   useEffect(() => {
     axios.get(`http://localhost:4000/api/comments`)
     .then(response => {
       setComments(response.data);
     });
   }, []);
-  
+
+  console.log(comments);
   return (
     <div className="Comments">
       <h2 className="Comments_title">Comments</h2>
@@ -23,8 +24,9 @@ const Comments = () => {
         { comments.length > 0 ? 
           comments.map(comment => {
             return <CommentCard
-                     comment={comment}
-                     key={comment._id}
+                     comment={comment._doc}
+                     album={comment.album}
+                     key={comment._doc._id}
                      className="Comments_commentCard"
                    />
           }) :
