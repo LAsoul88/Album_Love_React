@@ -3,6 +3,8 @@ import NavBar from './Nav/NavBar';
 import HomeContainer from './Album/Home/HomeContainer';
 import ShowContainer from './Album/Show/ShowContainer';
 
+import './App.scss';
+
 const App = () => {
   return (
     <div className="App">

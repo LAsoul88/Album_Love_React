@@ -26,9 +26,9 @@ const Search = () => {
   return (
     <div className="Search">
       <h2 className="Search_helperText">
-        Use the search bar below to 
-        { albums.length > 0 ? 'continue' : 'start' } 
-        looking for your favorite albums!
+        Use the search bar below to { 
+        albums.length > 0 ? 'continue' : 'start' 
+        } looking for your favorite albums!
       </h2>
       <div className="Search_searchBar">
         <SearchBar updateQuery={updateQuery} />
@@ -36,16 +36,19 @@ const Search = () => {
       <div className="Search_albumList">
         { albums.length > 0 ?
           albums.map(album => {
-            return <AlbumCard 
-                     album={album} 
-                     key={album.id} 
-                     className="Search_albumCard"
-                   />
+            return <div className="Search_albumCardContainer">
+                     <AlbumCard 
+                       album={album} 
+                       key={album.id} 
+                     />
+                   </div>
           }) : 
-            <img 
-              src="https://media.giphy.com/media/l3vQY93bN54rXJTrO/giphy.gif" alt="searching through records" 
-              className="Search_gif"
-            />
+            <div className="Search_gifContainer">
+              <img 
+                src="https://media.giphy.com/media/l3vQY93bN54rXJTrO/giphy.gif" alt="searching through records" 
+                className="Search_gif"
+              />
+            </div>
         }
       </div>
     </div>
