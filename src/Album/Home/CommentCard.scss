@@ -1,0 +1,45 @@
+.CommentCard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .CommentCard_topRow {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+    .CommentCard_avatarImgContainer {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+  
+      .CommentCard_avatarImg {
+        width: 40px;
+      }
+    }
+  
+    .CommentCard_albumImgContainer {
+      width: 100%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+
+      .CommentCard_albumImg {
+        width: 100px;
+      }
+    }
+  }
+
+  .CommentCard_username {
+
+  }
+
+  .CommentCard_publishDate {
+
+  }
+
+  .CommentCard_content {
+
+  }
+}

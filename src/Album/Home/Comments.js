@@ -16,19 +16,19 @@ const Comments = () => {
     });
   }, []);
 
-  console.log(comments);
   return (
     <div className="Comments">
       <h2 className="Comments_title">Comments</h2>
       <ul className="Comments_list">
         { comments.length > 0 ? 
           comments.map(comment => {
-            return <CommentCard
-                     comment={comment._doc}
-                     album={comment.album}
-                     key={comment._doc._id}
-                     className="Comments_commentCard"
-                   />
+            return <div className="Comments_commentCardContainer">
+                     <CommentCard
+                       comment={comment._doc}
+                       album={comment.album}
+                       key={comment._doc._id}
+                     />
+                   </div>
           }) :
           "No comments available"
         }

@@ -1,12 +1,13 @@
 .HomeContainer {
   width: 100%;
   display: flex;
+  
+  .HomeContainer_search {
+    // width: 60vw;
+    width: 100%;
+  }
+  // .HomeContainer_comments {
+  //   width: 40vw;
+  // }
 }
 
-.HomeContainer_search {
-  width: 75%;
-}
-
-.HomeContainer_comments {
-  width: 25%;
-}

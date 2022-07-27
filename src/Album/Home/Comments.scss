@@ -1,11 +1,22 @@
 .Comments {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid black;
 
   .Comments_title {
-    font-size: 1.5rem; 
+    text-align: center;
   }
   .Comments_list {
+    max-width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    padding: 0;
+    margin: 0;
+
+    .Comments_commentCardContainer {
+      width: 100%;
+    }
   }
 }

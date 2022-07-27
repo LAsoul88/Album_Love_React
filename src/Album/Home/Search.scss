@@ -1,3 +1,40 @@
-h2 {
-  text-align: center;
+.Search {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  gap: 16px;
+
+  .Search_helperText {
+    text-align: center;
+    margin: 48px 0;
+  }
+
+  .Search_searchBar {
+    margin: 0;
+  }
+
+  .Search_albumList {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 24px;
+    gap: 48px;
+
+    .Search_albumCardContainer {
+      width: 25vw;
+    }
+
+    .Search_gifContainer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      .Search_gif {
+        width: 250px;
+      }
+    }
+  }
 }

@@ -1,14 +1,21 @@
 import { Link } from 'react-router-dom';
+
 import './AlbumCard.scss';
 
 const AlbumCard = ({ album }) => {
   const { id, images, name } = album;
+  let formattedName = name;
+  if (name.length > 43) {
+    formattedName = name.substring(0, 40).trim() + "...";
+  }
   return (
       <div className="AlbumCard">
-        <Link 
-          to={`albums/${id}`} 
-          className="AlbumCard_nameLink"
-        >{name}</Link>
+        <div className="AlbumCard_nameLinkContainer">
+          <Link 
+            to={`albums/${id}`} 
+            className="AlbumCard_nameLink nameLink___fontSize"
+          >{formattedName}</Link>
+        </div>
         <div className="AlbumCard_imgContainer">
           <Link 
             to={`albums/${id}`} 
@@ -17,7 +24,7 @@ const AlbumCard = ({ album }) => {
             <img 
               src={images[0].url} 
               alt={name} 
-              className="AlbumCard_img" 
+              className="AlbumCard_img img___shadow" 
             />
           </Link>
         </div>

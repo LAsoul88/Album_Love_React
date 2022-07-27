@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import './ShowContainer.scss';
-
 import CoverArt from './CoverArt';
 import TrackList from './TrackList';
+
+import './ShowContainer.scss';
+
 
 const ShowContainer = () => {
   
